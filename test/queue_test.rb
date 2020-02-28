@@ -6,20 +6,17 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe "Test Queue Implementation" do
   it "creates a Queue" do
-    skip
     q = Queue.new
     expect(q.class).must_equal Queue
   end
 
   it "adds something to an empty Queue" do
-    skip
     q = Queue.new
     q.enqueue(10)
     expect(q.to_s).must_equal "[10]"
   end
 
   it "adds multiple somethings to a Queue" do
-    skip
     q = Queue.new
     q.enqueue(10)
     q.enqueue(20)
