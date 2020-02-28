@@ -25,9 +25,8 @@ describe "Test Queue Implementation" do
   end
 
   it "starts the size of a Queue at 0" do
-    skip
     q = Queue.new
-    q.empty?.must_equal true
+    _(q.empty?).must_equal true
   end
 
   it "a Queue is empty after removing all the elements" do

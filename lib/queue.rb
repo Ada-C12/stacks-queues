@@ -33,7 +33,7 @@ class Queue
   end
 
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    return @front == -1
   end
 
   def to_s
