@@ -13,7 +13,8 @@ describe "Test Queue Implementation" do
   it "adds something to an empty Queue" do
     q = Queue.new
     q.enqueue(10)
-    expect(q.to_s).must_equal "[10]"
+    #expect(q.to_s).must_equal "[10]"
+    expect(q.to_s).must_equal "[10, nil, nil, nil, nil, nil, nil, nil, nil, nil]"
   end
 
   it "adds multiple somethings to a Queue" do
@@ -21,7 +22,8 @@ describe "Test Queue Implementation" do
     q.enqueue(10)
     q.enqueue(20)
     q.enqueue(30)
-    expect(q.to_s).must_equal "[10, 20, 30]"
+    #expect(q.to_s).must_equal "[10, 20, 30]"
+    expect(q.to_s).must_equal "[10, 20, 30, nil, nil, nil, nil, nil, nil, nil]"
   end
 
   it "starts the size of a Queue at 0" do
