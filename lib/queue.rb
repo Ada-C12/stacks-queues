@@ -29,11 +29,25 @@ class Queue
   end
 
   def front
-    raise NotImplementedError, "Not yet implemented"
+    return @store[@front]
   end
 
   def size
-    raise NotImplementedError, "Not yet implemented"
+    length = 0
+
+    if @back > @front
+      length = (@back - @front) + 1
+    elsif @front > @back
+      length = @store.length - @front
+      i = 0
+
+      until @store[i] == nil
+        length += 1
+        i += 1
+      end
+    end
+
+    return length
   end
 
   def empty?
