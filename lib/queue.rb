@@ -1,33 +1,57 @@
-require_relative "linked_list"
-
 class Queue
   def initialize
-    # @store = ...
     @store = Array.new(100)
     @front = @back = -1
   end
 
   def enqueue(element)
-    @store.add_last(element)
+    if @front == -1 && @back == -1
+      @front = 0
+      @back = 1
+    end
+
+    if @front == @back
+      raise Error, "Queue is full!"
+    end
+
+    @store[@back] = element
+    @back = (@back + 1) % @store.length
+
+    if @store[@front].nil?
+      @front = (@front + 1) % @store.length
+    end
   end
 
   def dequeue
-    return nil if self.empty?
+    if @front == -1 && @back == -1
+      @front = 0
+      @back = 1
+    end
+    if @front == @back
+      raise Error.new "Queue is empty!"
+    end
+    element = @store[@front]
+    @front = (@front + 1) % @store.length
+    return element
   end
 
   def front
-    raise NotImplementedError, "Not yet implemented"
+    return @store[@front]
   end
 
   def size
-    raise NotImplementedError, "Not yet implemented"
+    @store.length
   end
 
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    if @front == @back
+      return true
+    else
+      return false
+    end
   end
 
   def to_s
-    return @store.empty?
+    return @store[@front...@back].to_s
   end
 end
