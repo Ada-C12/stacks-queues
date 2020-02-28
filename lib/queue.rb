@@ -1,16 +1,33 @@
 class Queue
-
   def initialize
-    # @store = ...
-    raise NotImplementedError, "Not yet implemented"
+    @store = Array.new()
+    # front and back of buffer
+    @front = -1
+    # for a buffer 
+    # @back = -1
   end
 
   def enqueue(element)
-    raise NotImplementedError, "Not yet implemented"
+    if @front == -1 #&& @back == -1
+     @front = 0
+    #  @back = 1
+    elsif @front == @back
+      # queue is full 
+      # DECIDE what to do if queue is full 
+      # raise error || make it bigger (see what the test requires)
+    end
+
+    @store << element
+    # @back = (@back + 1) % @store.length
+    
   end
 
   def dequeue
-    raise NotImplementedError, "Not yet implemented"
+    if @front == -1
+      return nil
+    else
+      return @store.shift
+    end
   end
 
   def front
@@ -22,7 +39,8 @@ class Queue
   end
 
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    return true if @store.empty?
+    return false
   end
 
   def to_s
