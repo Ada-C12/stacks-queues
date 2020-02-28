@@ -27,11 +27,15 @@ class Queue
   end
 
   def front
-    raise NotImplementedError, "Not yet implemented"
+    return @store[@front]
   end
 
   def size
-    raise NotImplementedError, "Not yet implemented"
+    if @front < @back
+      return @back - @front
+    else
+      return @front - @back
+    end
   end
 
   def empty?
