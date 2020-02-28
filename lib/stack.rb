@@ -1,11 +1,12 @@
 class Stack
   def initialize
-    # @store = ...
-    raise NotImplementedError, "Not yet implemented"
+    @store = Array.new(10)
+    @front = -1
+    @back = -1
   end
 
   def push(element)
-    raise NotImplementedError, "Not yet implemented"
+    
   end
 
   def pop
