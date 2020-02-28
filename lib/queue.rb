@@ -1,31 +1,51 @@
 class Queue
-
+  
   def initialize
-    # @store = ...
-    raise NotImplementedError, "Not yet implemented"
+    @store = Array.new(100)
+    @front = @back = -1
   end
-
+  
   def enqueue(element)
-    raise NotImplementedError, "Not yet implemented"
+    if @front == -1 && @back == -1
+      @front = @back = 0
+    end
+    if self.empty? || @front != @back
+      @store[@back] = element
+      @back = (@back + 1) % @store.length
+    end
   end
-
+  
   def dequeue
-    raise NotImplementedError, "Not yet implemented"
+    if !self.empty?
+      num = @store[@front]
+      @store[@front] = nil
+      @front = (@front + 1) % @store.length
+      return num
+    else
+      return nil
+    end
   end
-
+  
   def front
     raise NotImplementedError, "Not yet implemented"
   end
-
+  
   def size
-    raise NotImplementedError, "Not yet implemented"
+    if self.empty?
+      return []
+    elsif @front < @back
+      return @store[@front...@back]
+    else
+      return @store[0...@back] + @store[@front...@store.length]
+    end
   end
-
+  
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    return true if @front == -1 && @back == -1
+    return @store[@front].nil?
   end
-
+  
   def to_s
-    return @store.to_s
+    return self.size.to_s
   end
 end
