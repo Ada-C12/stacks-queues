@@ -6,13 +6,13 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 describe "Test Stack Implementation" do
   it "creates a Stack" do
     s = Stack.new
-    s.class.must_equal Stack
+    _(s.class).must_equal Stack
   end
 
   it "pushes something onto a empty Stack" do
     s = Stack.new
     s.push(10)
-    s.to_s.must_equal "[10]"
+    _(s.to_s).must_equal "[10]"
   end
 
   it "pushes multiple somethings onto a Stack" do
@@ -20,7 +20,7 @@ describe "Test Stack Implementation" do
     s.push(10)
     s.push(20)
     s.push(30)
-    s.to_s.must_equal "[10, 20, 30]"
+    _(s.to_s).must_equal "[10, 20, 30]"
   end
 
   it "starts the stack empty" do
@@ -33,7 +33,7 @@ describe "Test Stack Implementation" do
     s.push(5)
     removed = s.pop
     removed.must_equal 5
-    s.empty?.must_equal true
+    _(s.empty?).must_equal true
   end
 
   it "removes the right something (LIFO)" do
@@ -43,6 +43,6 @@ describe "Test Stack Implementation" do
     s.push(7)
     removed = s.pop
     removed.must_equal 7
-    s.to_s.must_equal "[5, 3]"
+    _(s.to_s).must_equal "[5, 3]"
   end
 end
