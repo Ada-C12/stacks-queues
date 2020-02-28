@@ -111,6 +111,6 @@ describe "Test Queue Implementation" do
     q.enqueue(210)
     q.dequeue
 
-    expect(q.to_s).must_equal('[30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]')
+     expect(q.to_s).must_equal('[40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 150, 160, 170, 180, 190, 200, 210]')
   end
 end
