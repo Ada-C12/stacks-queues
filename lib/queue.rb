@@ -21,7 +21,15 @@ class Queue
   end
 
   def dequeue
-    raise NotImplementedError, "Not yet implemented"
+    data = @store[@front]
+    @front = (@front + 1) % @store.length
+
+    if @front == @back
+      @front = -1
+      @back = -1
+    end
+    
+    return data
   end
 
   def front
