@@ -11,10 +11,13 @@ class Queue
       @back = 1
     end
     if @front == @back
-      return []
+      #something
     end
     @store[@back] = element
     @back = (@back + 1) % @store.length
+    if @store[@front].nil?
+      @front = (@front + 1) % @store.length
+    end
   end
 
   def dequeue
@@ -26,14 +29,14 @@ class Queue
   end
 
   def size
-    raise NotImplementedError, "Not yet implemented"
+    return @store.compact.size
   end
 
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    return(size == 0)
   end
 
   def to_s
-    return @store.to_s
+    return @store[@front...@back].to_s
   end
 end
