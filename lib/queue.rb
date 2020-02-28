@@ -1,7 +1,7 @@
 class Queue
   
   def initialize
-    @store = Array.new(100)
+    @store = Array.new(30)
     # we don't have a front and back yet so they're both -1
     @front = @back = -1
     
@@ -12,11 +12,11 @@ class Queue
     if @front == -1 && @back == -1
       @front = 0
       # because there will be one element after we enqueue the first one
-      @back = 1
+      @back = 0
     end
     
     # if queue is full
-    if @front == @back
+    if ((@back + 1) % @store.length) == @front
       raise ArgumentError.new("Error: queue is full")
     end
     
@@ -26,24 +26,42 @@ class Queue
   end
   
   def dequeue
-    # when queue is empty change front and back to -1 so that you know it's empty
+    # when queue is empty
+    if @front == @back
+      raise ArgumentError.new("Error: queue is empty")
+    end
     
-    raise NotImplementedError, "Not yet implemented"
+    temp = @store[@front]
+    @store[@front] = nil
+    @front = (@front + 1) % @store.length
+    
+    return temp
   end
   
   def front
-    raise NotImplementedError, "Not yet implemented"
+    return @store[@front]
   end
   
   def size
-    raise NotImplementedError, "Not yet implemented"
+    if @front < @back
+      return @back - @front
+    else
+      return @front - @back
+    end
   end
   
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    return true if @front == @back
+    return false
   end
   
   def to_s
+    if @front < @back
+      @store = @store[@front...@back]
+    elsif @front != @back
+      @store = @store[@back..-1] + @store[0...@front]
+    end
     return @store.to_s
   end
+  
 end
