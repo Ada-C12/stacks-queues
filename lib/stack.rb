@@ -11,7 +11,7 @@ class Stack
 
   def pop
     data = @store.get_last
-    @store.delete(data)
+    @store.remove_last()
     return data
   end
 
