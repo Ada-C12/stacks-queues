@@ -10,22 +10,14 @@ class Queue
   def enqueue(element)
     if @front == -1 #&& @back == -1
      @front = 0
-    #  @back = 1
-    elsif @front == @back
-      # queue is full 
-      # DECIDE what to do if queue is full 
-      # raise error || make it bigger (see what the test requires)
     end
 
-    @store << element
+    return @store << element
     # @back = (@back + 1) % @store.length
-    
   end
 
   def dequeue
-    if @front == -1
-      return nil
-    else
+    if @store.length > 0
       return @store.shift
     end
   end
