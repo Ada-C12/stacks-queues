@@ -3,19 +3,18 @@ require "linked_list"
 class Stack
   def initialize
     @store = LinkedList.new
-    @front = -1
   end
 
   def push(element)
-    @store.add_first(element)
+    @store.add_last(element)
   end
 
   def pop
-    raise NotImplementedError, "Not yet implemented"
+    @store.remove_last()
   end
 
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    @store.empty?
   end
 
   def to_s

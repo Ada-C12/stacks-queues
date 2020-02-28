@@ -24,13 +24,11 @@ describe "Test Stack Implementation" do
   end
 
   it "starts the stack empty" do
-    skip
     s = Stack.new
     s.empty?.must_equal true
   end
 
   it "removes something from the stack" do
-    skip
     s = Stack.new
     s.push(5)
     removed = s.pop
@@ -39,7 +37,6 @@ describe "Test Stack Implementation" do
   end
 
   it "removes the right something (LIFO)" do
-    skip
     s = Stack.new
     s.push(5)
     s.push(3)
