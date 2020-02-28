@@ -1,7 +1,7 @@
 class Queue
 
   def initialize
-    @store = Array.new(10)
+    @store = Array.new
     @front = @back = -1 # nothing has been set yet so both will be set to -1
   end
 
@@ -11,11 +11,12 @@ class Queue
       @back = 1
     end
     if @front == @back
-      # DECIDE HERE
+      raise ArgumentError.new
     end
 
     @store[@back] = element
     @back = (@back + 1) % @store.length # but what happens when it reaches the end?
+    print "*********#{}"
   end
 
   def dequeue
