@@ -33,8 +33,8 @@ describe "Test Queue Implementation" do
     q = Queue.new
     q.enqueue(5)
     q.enqueue(6)
-    expect(expect(q.dequeue)).must_equal 5
-    expect(expect(q.dequeue)).must_equal 6
+    expect(q.dequeue).must_equal 5
+    expect(q.dequeue).must_equal 6
     expect(q.empty?).must_equal true
   end
 
@@ -94,7 +94,6 @@ describe "Test Queue Implementation" do
     q.enqueue(130)
     q.enqueue(140)
     q.enqueue(150)
-    q.enqueue(150)
     q.enqueue(160)
     q.enqueue(170)
     q.enqueue(180)
@@ -103,6 +102,6 @@ describe "Test Queue Implementation" do
     q.enqueue(210)
     q.dequeue
 
-    expect(q.to_s).must_equal("[30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]")
+    expect(q.to_s).must_equal("[40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210]")
   end
 end

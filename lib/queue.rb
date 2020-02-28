@@ -11,7 +11,7 @@ class Queue
       @back = 1
     end
     if @front == @back
-      #something
+      raise ArgumentError, "QUEUE IS FULL. PLEASE STOP STUFFING IT."
     end
     @store[@back] = element
     @back = (@back + 1) % @store.length
@@ -21,11 +21,17 @@ class Queue
   end
 
   def dequeue
-    raise NotImplementedError, "Not yet implemented"
+    if (size == 0)
+      return nil
+    end
+    temp_pop = @store[@front]
+    @store[@front] = nil
+    @front = (@front + 1) % @store.length
+    return temp_pop
   end
 
   def front
-    raise NotImplementedError, "Not yet implemented"
+    return @store[@front]
   end
 
   def size
