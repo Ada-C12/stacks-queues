@@ -18,7 +18,7 @@ class Queue
     
     @store[@back] = element
     @back = (@back + 1) % @store.length
-    if @store[@front].nil?
+    if front.nil?
       @front = (@front + 1) % @store.length
     end
     
@@ -27,7 +27,7 @@ class Queue
   def dequeue
    return nil if size == 0
 
-    ejected_element = @store[@front]
+    ejected_element = front
     @store[@front] = nil
     @front = (@front + 1) % @store.length
 
@@ -42,7 +42,6 @@ class Queue
   
   def size
     return @store.compact.size
-    # trying out compact vs slice
   end
   
   def empty?
@@ -50,7 +49,6 @@ class Queue
   end
   
   def to_s
-    return @store[@front...@back].to_s
-    # slicing instead of compacting...because just trying different things
+    return @store.compact.to_s
   end
 end
