@@ -1,7 +1,6 @@
 class Stack
   def initialize
-    # @store = ...
-    raise NotImplementedError, "Not yet implemented"
+    @store = []
   end
 
   def push(element)
