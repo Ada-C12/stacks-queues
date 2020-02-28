@@ -3,8 +3,6 @@ require_relative './linked_list.rb'
 class Stack
   def initialize
     @store = LinkedList.new
-    # @front = -1
-    # @back = -1
   end
 
   def push(element)
