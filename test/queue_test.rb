@@ -6,6 +6,7 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe "Test Queue Implementation" do
   it "creates a Queue" do
+    skip
     q = Queue.new
     expect(q.class).must_equal Queue
   end
