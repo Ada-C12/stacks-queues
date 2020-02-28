@@ -1,28 +1,52 @@
 class Queue
-
+  attr_reader :front, :back
   def initialize
-    # @store = ...
-    raise NotImplementedError, "Not yet implemented"
+    @store = Array.new()
+    @front = -1
+    @back = -1
   end
 
   def enqueue(element)
-    raise NotImplementedError, "Not yet implemented"
+    if @front == -1 && @back == -1
+      @front = 0
+      @back = 0
+    elsif @front == @back
+      @back = @store.length
+    end
+
+    @store[@back] = element
+    @back = (@back + 1) % size
+    
+    return @store
   end
 
   def dequeue
-    raise NotImplementedError, "Not yet implemented"
+    return @store[@front] if empty?
+    
+    @store.pop
+    
+    if @front == @back
+      @front = -1
+      @back = -1
+    else
+      @back -= 1
+    end
+
+    return @store[@front]
   end
 
   def front
-    raise NotImplementedError, "Not yet implemented"
+    return nil if @front == -1 && @back == -1
+    return @front
   end
 
   def size
-    raise NotImplementedError, "Not yet implemented"
+    return @store.length
   end
 
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    return true if @front == -1 && @back == -1
+    return false
   end
 
   def to_s

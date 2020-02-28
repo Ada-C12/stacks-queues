@@ -36,8 +36,8 @@ class LinkedList
       raise ArgumentError, "Empty" if self.empty?
 
       value = @head.data
-      @head = @head.next
       @head.previous = nil
+      @head = @head.next
       return value
     end
 

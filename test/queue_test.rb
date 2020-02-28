@@ -6,6 +6,7 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe "Test Queue Implementation" do
   it "creates a Queue" do
+    skip
     q = Queue.new
     q.class.must_equal Queue
   end
@@ -69,15 +70,19 @@ describe "Test Queue Implementation" do
     q = Queue.new
     q.enqueue(40)
     q.enqueue(22)
-    q.enqueue(3)
+    q.enqueue(3)    
     q.dequeue
     expect(q.dequeue).must_equal 22
   end
+
   it "works for a large Queue" do
+    # skip
     q = Queue.new
     q.enqueue(10)
     q.enqueue(20)
     q.enqueue(30)
+    puts "here is the front: #{q.front}" 
+    puts "here is the back: #{q.back}" 
     expect(q.dequeue).must_equal 10
     expect(q.dequeue).must_equal 20
     q.enqueue(40)
