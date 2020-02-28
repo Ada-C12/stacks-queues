@@ -1,11 +1,13 @@
+require "linked_list"
+
 class Stack
   def initialize
-    # @store = ...
-    raise NotImplementedError, "Not yet implemented"
+    @store = LinkedList.new
+    @front = -1
   end
 
   def push(element)
-    raise NotImplementedError, "Not yet implemented"
+    @store.add_first(element)
   end
 
   def pop

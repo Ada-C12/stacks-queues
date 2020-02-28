@@ -1,6 +1,6 @@
-require 'minitest/autorun'
-require 'minitest/reporters'
-require_relative '../lib/stack'
+require "minitest/autorun"
+require "minitest/reporters"
+require_relative "../lib/stack"
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe "Test Stack Implementation" do
@@ -10,14 +10,12 @@ describe "Test Stack Implementation" do
   end
 
   it "pushes something onto a empty Stack" do
-    skip
     s = Stack.new
     s.push(10)
     s.to_s.must_equal "[10]"
   end
 
   it "pushes multiple somethings onto a Stack" do
-    skip
     s = Stack.new
     s.push(10)
     s.push(20)

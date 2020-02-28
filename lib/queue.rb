@@ -1,12 +1,20 @@
 class Queue
-
   def initialize
-    # @store = ...
-    raise NotImplementedError, "Not yet implemented"
+    @store = Array.new(100)
+    @front = -1
+    @back = -1
   end
 
   def enqueue(element)
-    raise NotImplementedError, "Not yet implemented"
+    if @front == -1 && @back == -1
+      @front = 0
+      @back = 1
+    end
+    if @front == @back
+      return []
+    end
+    @store[@back] = element
+    @back = (@back + 1) % @store.length
   end
 
   def dequeue

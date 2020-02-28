@@ -1,6 +1,6 @@
-require 'minitest/autorun'
-require 'minitest/reporters'
-require_relative '../lib/queue'
+require "minitest/autorun"
+require "minitest/reporters"
+require_relative "../lib/queue"
 
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
@@ -101,6 +101,6 @@ describe "Test Queue Implementation" do
     q.enqueue(210)
     q.dequeue
 
-    expect(q.to_s).must_equal('[40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240]')
+    expect(q.to_s).must_equal("[40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240]")
   end
 end
