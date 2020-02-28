@@ -25,7 +25,7 @@ describe "Test Stack Implementation" do
 
   it "starts the stack empty" do
     s = Stack.new
-    s.empty?.must_equal true
+    _(s.empty?).must_equal true
   end
 
   it "removes something from the stack" do
