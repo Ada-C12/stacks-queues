@@ -28,20 +28,23 @@ class Queue
   def dequeue
     raise NotImplementedError, "Not yet implemented"
   end
+
   
   def front
     raise NotImplementedError, "Not yet implemented"
   end
   
   def size
-    raise NotImplementedError, "Not yet implemented"
+    return @store.compact.size
+    # trying out compact vs slice
   end
   
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    return size == 0
   end
   
   def to_s
     return @store[@front...@back].to_s
+    # slicing instead of compacting...because just trying different things
   end
 end
