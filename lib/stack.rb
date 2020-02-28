@@ -1,14 +1,18 @@
+require_relative 'linked_list'
+
 class Stack
   def initialize
-    @store = []
+    @store = LinkedList.new
   end
 
   def push(element)
-    @store << element
+    @store.add_last(element)
   end
 
   def pop
-    raise NotImplementedError, "Not yet implemented"
+    data = @store.get_last
+    @store.delete(data)
+    return data
   end
 
   def empty?
