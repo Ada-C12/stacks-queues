@@ -32,11 +32,15 @@ class Queue
   end
 
   def front
-    # return @front
+    return @store[@front]
   end
 
   def size
-    
+    if @front < @back
+      return @back - @front
+    else
+      return @front - @back
+    end
   end
 
   def empty?
@@ -46,10 +50,6 @@ class Queue
       return false
     end
   end
-
-  # def to_s
-  #   return @store.to_s
-  # end
 
   def to_s
     return @store[@front...@back].to_s
