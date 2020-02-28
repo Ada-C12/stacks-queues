@@ -1,16 +1,18 @@
-class Queue
+require_relative "linked_list"
 
+class Queue
   def initialize
     # @store = ...
-    raise NotImplementedError, "Not yet implemented"
+    @store = Array.new(100)
+    @front = @back = -1
   end
 
   def enqueue(element)
-    raise NotImplementedError, "Not yet implemented"
+    @store.add_last(element)
   end
 
   def dequeue
-    raise NotImplementedError, "Not yet implemented"
+    return nil if self.empty?
   end
 
   def front
@@ -26,6 +28,6 @@ class Queue
   end
 
   def to_s
-    return @store.to_s
+    return @store.empty?
   end
 end

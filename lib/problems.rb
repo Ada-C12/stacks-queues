@@ -1,9 +1,19 @@
-require_relative './stack.rb'
+require_relative "./stack.rb"
 
 # Time Complexity: ?
 # Space Complexity: ?
 def balanced(string)
-  raise NotImplementedError, "Not implemented yet"
+  stack = []
+  parens = { "(" => ")", "{" => "}", "[" => "]" }
+
+  string.each_char do |c|
+    if parens[c]
+      stack.push(c)
+    elsif parens[stack.pop] != c
+      return false
+    end
+  end
+  stack.empty?
 end
 
 # Time Complexity: ?
