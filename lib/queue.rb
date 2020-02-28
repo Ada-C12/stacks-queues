@@ -13,8 +13,7 @@ class Queue
     end
     
     if @front == @back
-      # DECIDE...something
-      # return @store
+      raise ArgumentError, "Queue if full!"
     end
     
     @store[@back] = element
@@ -26,12 +25,19 @@ class Queue
   end
   
   def dequeue
-    raise NotImplementedError, "Not yet implemented"
+   return nil if size == 0
+
+    ejected_element = @store[@front]
+    @store[@front] = nil
+    @front = (@front + 1) % @store.length
+
+    return ejected_element
+
   end
 
   
   def front
-    raise NotImplementedError, "Not yet implemented"
+    return @store[@front]
   end
   
   def size
