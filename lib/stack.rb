@@ -4,7 +4,7 @@ class Stack
   end
 
   def push(element)
-    raise NotImplementedError, "Not yet implemented"
+    @store << element
   end
 
   def pop
@@ -12,7 +12,8 @@ class Stack
   end
 
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    return true if @store.empty?
+    return false
   end
 
   def to_s
