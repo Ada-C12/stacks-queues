@@ -26,7 +26,7 @@ class Queue
   end
 
   def front
-    raise NotImplementedError, "Not yet implemented"
+    return @store[@front]
   end
 
   def size
@@ -43,7 +43,6 @@ class Queue
   end
 
   def to_s
-    puts @store.to_s
     return @store[@front...@back].to_s
   end
 end
