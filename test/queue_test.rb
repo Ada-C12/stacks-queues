@@ -53,15 +53,18 @@ describe "Test Queue Implementation" do
   end
 
   it "properly adjusts the size with enqueueing and dequeueing" do
-    skip
+    # skip
     q = Queue.new
     expect(q.empty?).must_equal true
+    expect(q.size).must_equal 0
     q.enqueue(-1)
     q.enqueue(-60)
     expect(q.empty?).must_equal false
+    expect(q.size).must_equal 2
     q.dequeue
     q.dequeue
     expect(q.empty?).must_equal true
+    expect(q.size).must_equal 0
   end
 
   it "returns the front element in the Queue" do

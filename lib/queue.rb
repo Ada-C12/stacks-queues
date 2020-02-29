@@ -30,7 +30,7 @@ class Queue
   end
 
   def size
-    raise NotImplementedError, "Not yet implemented"
+    return @store[@front...@back].length
   end
 
   def empty?
