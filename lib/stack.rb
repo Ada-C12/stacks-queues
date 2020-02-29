@@ -10,11 +10,11 @@ class Stack
   end
 
   def pop
-    raise NotImplementedError, "Not yet implemented"
+    @store.remove_last()
   end
 
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    return @store.empty?()
   end
 
   def to_s
