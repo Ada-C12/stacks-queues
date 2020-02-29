@@ -18,7 +18,7 @@ def balanced(string)
     end
   end
 
-  return true
+  return stack.empty?
 end
 
 # Time Complexity: ?

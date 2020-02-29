@@ -11,25 +11,21 @@ describe "Test wave 3 problems" do
     end
 
     it "regards an empty string as balanced" do
-      skip
       expect(balanced('')).must_equal true
     end
 
     it "will return false for an unbalanced set of parens" do
-      skip
       expect(balanced('(()')).must_equal false
       expect(balanced('(()}')).must_equal false
       expect(balanced('([]]')).must_equal false
     end
 
     it "also works for {} and []" do
-      skip
       expect(balanced('[]')).must_equal true
       expect(balanced('{}')).must_equal true
     end
 
     it "also works if the string has opens and closes in the beginning and end" do
-      skip
       expect(balanced('[]()')).must_equal true
     end
   end
