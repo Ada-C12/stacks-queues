@@ -124,4 +124,14 @@ describe "Test Queue Implementation" do
     
     expect(q.to_s).must_equal("[3, 4, 5, 6, 7, 8, 9, 10, 11]")
   end
+
+  it "can return the element at the front without changing the queue" do
+    q = Queue.new
+    q.enqueue(1)
+    q.enqueue(2)
+    q.enqueue(3)
+
+    expect(q.front).must_equal(1)
+    expect(q.to_s).must_equal("[1, 2, 3]")
+  end
 end
