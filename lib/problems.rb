@@ -3,7 +3,22 @@ require_relative './stack.rb'
 # Time Complexity: O(n)
 # Space Complexity: O(n)
 def balanced(string)
-  raise NotImplementedError, "Not implemented yet"
+  paren_hash = { ")" => "(", "}" => "{", "]" => "[" }
+
+  stack = Stack.new
+
+  string.each_char do |char|
+    if paren_hash[char]
+      last = stack.pop
+      if paren_hash[char] != last
+        return false
+      end
+    else
+      stack.push(char)
+    end
+  end
+
+  return true
 end
 
 # Time Complexity: ?
