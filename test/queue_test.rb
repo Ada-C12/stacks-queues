@@ -33,7 +33,7 @@ describe "Test Queue Implementation" do
   end
 
   it "removes something from the Queue" do
-    skip
+    # skip
     q = Queue.new
     q.enqueue(5)
     removed = q.dequeue
@@ -42,7 +42,7 @@ describe "Test Queue Implementation" do
   end
 
   it "removes the right something (LIFO)" do
-    skip
+    # skip
     q = Queue.new
     q.enqueue(5)
     q.enqueue(3)

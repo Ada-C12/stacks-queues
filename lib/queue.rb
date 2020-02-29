@@ -19,7 +19,10 @@ class Queue
   end
 
   def dequeue
-    raise NotImplementedError, "Not yet implemented"
+    item = @store[@front]
+    @store[@front] = nil
+    @front = (@front + 1) % @store.length
+    return item
   end
 
   def front
