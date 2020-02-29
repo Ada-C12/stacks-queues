@@ -1,7 +1,4 @@
 class Queue
-  class QueueTooSmallError < StandardError
-  end
-
   def initialize
     @store = Array.new(10)
     @front = @back = -1
@@ -11,7 +8,31 @@ class Queue
     if @front == -1 && @back == -1
       @front = @back = 0
     elsif @front == @back
-      raise QueueTooSmallError, "Queue is too small"
+      length = @store.length
+      new_length = length * 2
+
+      new_queue = Array.new(new_length)
+      curr = 0
+      until curr == @front
+        new_queue[curr] = @store[curr]
+        curr += 1
+      end
+
+      remaining = length - @front
+      begin_remaining = new_length - remaining
+      until curr == begin_remaining
+        curr += 1
+      end
+
+      remaining_start_index = @front
+      while curr < new_length
+        new_queue[curr] = @store[remaining_start_index]
+        curr += 1
+        remaining_start_index += 1
+      end
+
+      @store = new_queue
+      @front = begin_remaining
     end
 
     @store[@back] = element
@@ -43,6 +64,13 @@ class Queue
   end
 
   def to_s
-    return @store[@front...@back].to_s
+    if @front >= @back
+      front_half = @store[@front..]
+      back_half = @store[0...@back]
+      full = front_half.concat(back_half).to_s
+      return full
+    else
+      return @store[@front...@back].to_s
+    end
   end
 end
