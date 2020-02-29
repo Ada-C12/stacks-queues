@@ -75,6 +75,7 @@ describe "Test Queue Implementation" do
     q.dequeue
     expect(q.dequeue).must_equal 22
   end
+
   it "works for a large Queue" do
     q = Queue.new
     q.enqueue(10)
@@ -104,5 +105,19 @@ describe "Test Queue Implementation" do
     q.dequeue
     
     expect(q.to_s).must_equal('[40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210]')
+  end
+
+  it "can print out queue in the right order when queue wraps around the circular buffer" do
+    q = Queue.new(10)
+    10.times do |number|
+      q.enqueue(number)
+    end
+    
+    5.times do 
+      q.dequeue
+    end
+
+    q.enqueue(100)
+    expect(q.to_s).must_equal('[5, 6, 7, 8, 9, 100]')
   end
 end

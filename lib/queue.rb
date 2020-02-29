@@ -1,7 +1,7 @@
 class Queue
 
-  def initialize
-    @store = Array.new(100)
+  def initialize(capacity = 100)
+    @store = Array.new(capacity)
     @start = -1
     @end = -1
   end
@@ -42,6 +42,14 @@ class Queue
   end
 
   def to_s
-    return @store.compact.to_s
+    queue = []
+    if @store[@start]
+      current_index = @start
+      while current_index != @end
+        queue << @store[current_index]
+        current_index = (current_index + 1) % @store.size
+      end
+    end
+    return queue.to_s
   end
 end
