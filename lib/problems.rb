@@ -24,8 +24,30 @@ def balanced(string)
   return false
 end
 
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n) where n is the number of characters in the expression
+# Space Complexity: O(n) where n is the number of operands stored at any given time (depends how many you chain together)
 def evaluate_postfix(postfix_expression)
-  raise NotImplementedError, "Not implemented yet"
+  stack = Stack.new
+  operators = {
+    "*" => :*,
+    "/" =>  :/,
+    "+" =>  :+,
+    "-" => :-,
+    "%" => :%,
+  }
+  
+  postfix_expression.each_char do |char|
+    if operators.keys.include?(char)
+      raise ArgumentError.new("Error! You must have 2 numbers stored to perform an operation") if stack.empty?
+      second_number = (stack.pop).to_i
+      raise ArgumentError.new("Error! You must have 2 numbers stored to perform an operation") if stack.empty?
+      first_number = (stack.pop).to_i
+      result = first_number.send(operators[char], second_number)
+      stack.push(result)
+    else
+      stack.push(char)
+    end
+  end
+  
+  return stack.pop
 end
