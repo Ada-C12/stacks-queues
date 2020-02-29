@@ -84,6 +84,7 @@ describe "Test Queue Implementation" do
     expect(q.dequeue).must_equal 22
   end
   it "works for a large Queue" do
+    skip
     q = Queue.new
     q.enqueue(10)
     q.enqueue(20)

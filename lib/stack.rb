@@ -1,7 +1,9 @@
 class Stack
   def initialize
     # @store = ...
-    raise NotImplementedError, "Not yet implemented"
+    @store = Array.new(10)
+    @top = nil
+    @next = nil
   end
 
   def push(element)

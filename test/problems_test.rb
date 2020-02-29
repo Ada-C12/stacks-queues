@@ -7,7 +7,6 @@ Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 describe "Test wave 3 problems" do
   describe "balanced" do
     it "Given balanced strings it should return true" do
-      skip
       expect(balanced('(({}))')).must_equal true
     end
 
@@ -40,7 +39,7 @@ describe "Test wave 3 problems" do
       skip
       expect(evaluate_postfix("34+")).must_equal 7
       expect(evaluate_postfix("34*")).must_equal 12
-      expect(evaluate_postfix("34-")).must_equal -1
+      expect(evaluate_postfix("34-")).must_equal (-1)
       expect(evaluate_postfix("34/")).must_equal 0
     end
 
@@ -49,7 +48,7 @@ describe "Test wave 3 problems" do
       expect(evaluate_postfix("34+2*")).must_equal 14
       expect(evaluate_postfix("34*2/")).must_equal 6
       expect(evaluate_postfix("34-1+")).must_equal 0
-      expect(evaluate_postfix("34/7-")).must_equal -7
+      expect(evaluate_postfix("34/7-")).must_equal (-7)
       expect(evaluate_postfix("35+6*")).must_equal 48
       expect(evaluate_postfix("62/5+")).must_equal 8
     end
