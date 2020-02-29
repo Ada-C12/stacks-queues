@@ -11,6 +11,7 @@ class Stack
   end
   
   def pop
+    return nil if @store.get_first == nil
     return @store.remove_last
   end
   
