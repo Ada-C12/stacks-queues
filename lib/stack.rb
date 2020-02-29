@@ -1,21 +1,21 @@
+require "linked_list"
+
 class Stack
   def initialize
-    # @store = ...
-    @store = Array.new(10)
-    @top = nil
-    @next = nil
+    @store = LinkedList.new
   end
 
   def push(element)
-    raise NotImplementedError, "Not yet implemented"
+    @store.add_last(element)
   end
 
   def pop
-    raise NotImplementedError, "Not yet implemented"
+    @store.remove_last
+
   end
 
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    return @store.empty?
   end
 
   def to_s
