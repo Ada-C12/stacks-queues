@@ -28,7 +28,8 @@ class Queue
    return nil if size == 0
 
     ejected_element = front
-    @store[@front] = nil
+    @store[@front] = nil  # weird that I couldn't use front on this one; when I do it failed 5 tests
+
     @front = (@front + 1) % @store.length
 
     return ejected_element
@@ -49,6 +50,21 @@ class Queue
   end
   
   def to_s
-    return @store.compact.to_s
+    queue = []
+    if size != 0
+      size.times do
+        queue << @store[@front]
+        @front = (@front + 1) % @store.size
+      end
+    end
+    return queue.to_s
+
+    # originally just had: return @store.compact.to_s (which passed the tests)
+    # Eve caught an untested edge case
+      # queue = [2, 3, nil, nil, 1] where index 4 is @front and index 1 is @back
+      # expected => [1, 2, 3]
+      # actual result from current method => [2, 3, 1]
+    # above method should fix the edge case Eve thought of
+
   end
 end
