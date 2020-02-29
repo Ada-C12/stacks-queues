@@ -71,8 +71,8 @@ class Queue
     if @back >= @front
       return @store[@front...@back].to_s
     else
-      queue = @store[@front...-1]
-      queue << @store[0..@back]
+      queue = @store[@front..-1]
+      queue << @store[0...@back]
       return queue
     end
   end
