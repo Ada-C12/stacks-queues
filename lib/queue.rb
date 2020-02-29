@@ -1,12 +1,21 @@
 class Queue
+  class QueueTooSmallError < StandardError
+  end
 
   def initialize
-    # @store = ...
-    raise NotImplementedError, "Not yet implemented"
+    @store = Array.new(10)
+    @front = @back = -1
   end
 
   def enqueue(element)
-    raise NotImplementedError, "Not yet implemented"
+    if @front == -1 && @back == -1
+      @front = @back = 0
+    elsif @front == @back
+      raise QueueTooSmallError, "Queue is too small"
+    end
+
+    @store[@back] = element
+    @back = (@back + 1) % @store.length
   end
 
   def dequeue
@@ -22,10 +31,16 @@ class Queue
   end
 
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    @store.each do |item|
+      if !item.nil?
+        return false
+      end
+    end
+    return true
   end
 
   def to_s
-    return @store.to_s
+    puts @store.to_s
+    return @store[@front...@back].to_s
   end
 end
