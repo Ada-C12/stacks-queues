@@ -60,7 +60,17 @@ class Queue
   end
 
   def size
-    return @store.length
+    if @back > @front
+      return @back - @front
+    elsif @front == @back
+      if @front == -1
+        return 0
+      else
+        return @store.length
+      end
+    else
+      return (@store.length - @front) + @back
+    end
   end
 
   def empty?

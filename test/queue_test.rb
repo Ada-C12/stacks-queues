@@ -134,4 +134,36 @@ describe "Test Queue Implementation" do
     expect(q.front).must_equal(1)
     expect(q.to_s).must_equal("[1, 2, 3]")
   end
+
+  it "can return the size of the queue" do
+    q = Queue.new
+    q.enqueue(1)
+    q.enqueue(2)
+
+    expect(q.size).must_equal(2)
+
+    q.enqueue(3)
+    q.enqueue(4)
+
+    expect(q.size).must_equal(4)
+  end
+
+  it "can return the size of the queue if it is circular" do
+    q = Queue.new
+    q.enqueue(1)
+    q.enqueue(2)
+    q.enqueue(3)
+    q.enqueue(4)
+    q.enqueue(5)
+    q.enqueue(6)
+    q.enqueue(7)
+    q.enqueue(8)
+    q.enqueue(9)
+    q.enqueue(10)
+    q.dequeue
+    q.dequeue
+    q.enqueue(11)
+
+    expect(q.size).must_equal 9
+  end
 end
