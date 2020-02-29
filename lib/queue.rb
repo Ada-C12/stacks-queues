@@ -56,11 +56,11 @@ class Queue
   end
 
   def front
-    raise NotImplementedError, "Not yet implemented"
+    return @store[@front]
   end
 
   def size
-    raise NotImplementedError, "Not yet implemented"
+    return @store.length
   end
 
   def empty?
@@ -71,9 +71,8 @@ class Queue
     if @back >= @front
       return @store[@front...@back].to_s
     else
-      queue = @store[@front..-1]
-      queue << @store[0...@back]
-      return queue
+      queue = @store[@front..-1] + @store[0...@back]
+      return queue.to_s
     end
   end
 end

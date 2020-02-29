@@ -105,4 +105,23 @@ describe "Test Queue Implementation" do
 
     expect(q.to_s).must_equal('[40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210]')
   end
+
+  it "works if front is after back" do
+    q = Queue.new
+    q.enqueue(1)
+    q.enqueue(2)
+    q.enqueue(3)
+    q.enqueue(4)
+    q.enqueue(5)
+    q.enqueue(6)
+    q.enqueue(7)
+    q.enqueue(8)
+    q.enqueue(9)
+    q.enqueue(10)
+    q.dequeue
+    q.dequeue
+    q.enqueue(11)
+    
+    expect(q.to_s).must_equal("[3, 4, 5, 6, 7, 8, 9, 10, 11]")
+  end
 end
