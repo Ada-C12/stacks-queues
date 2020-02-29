@@ -32,7 +32,7 @@ describe "Test Stack Implementation" do
     s = Stack.new
     s.push(5)
     removed = s.pop
-    removed.must_equal 5
+    _(removed).must_equal 5
     _(s.empty?).must_equal true
   end
 
@@ -42,7 +42,7 @@ describe "Test Stack Implementation" do
     s.push(3)
     s.push(7)
     removed = s.pop
-    removed.must_equal 7
+    _(removed).must_equal 7
     _(s.to_s).must_equal "[5, 3]"
   end
 end
