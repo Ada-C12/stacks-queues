@@ -1,22 +1,15 @@
 class Queue
   
-  def initialize(capacity = 100)
-    @store = Array.new(capacity)
-    @front = -1
-    @back = -1
+  def initialize()
+    @store = Array.new(100)
+    @front = 0
+    @back = 0
   end
   
   def enqueue(element)
-    if @front == -1 && @back == -1
-      @front = 0
-      @back = 1
-    end
-    
-    raise StandardError, "Queue is full"if @front == @back
-    
+    raise StandardError, "Queue is full" if @front == @back && !front.nil?
     @store[@back] = element
     @back = (@back + 1) % @store.size
-    @front = (@front + 1) % @store.size if front.nil?
   end
   
   def dequeue

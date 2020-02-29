@@ -108,16 +108,16 @@ describe "Test Queue Implementation" do
   end
 
   it "can print out queue in the right order when queue wraps around the circular buffer" do
-    q = Queue.new(10)
-    10.times do |number|
+    q = Queue.new
+    100.times do |number|
       q.enqueue(number)
     end
     
-    5.times do 
+    95.times do 
       q.dequeue
     end
 
-    q.enqueue(100)
-    expect(q.to_s).must_equal('[5, 6, 7, 8, 9, 100]')
+    q.enqueue(1)
+    expect(q.to_s).must_equal('[95, 96, 97, 98, 99, 1]')
   end
 end
