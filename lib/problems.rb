@@ -1,7 +1,8 @@
 require_relative './stack.rb'
 
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n), where n is a character in the string
+# Space Complexity: O(n), where n is a character in the string,
+#                   because if there were no matches, I would add every character to the stack.
 def balanced(string)
   parens_key = {
     ")": "(",
