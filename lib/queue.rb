@@ -7,24 +7,34 @@ class Queue
   end
   
   def enqueue(element)
+    if (@back == ((@front - 1) % (@store.length - 1)))
+      data = @store
+      old_length = @store.length
+      new_array = Array.new(10)
+      @store = data[@front..-1] + data[0...@front]
+      @front = 0
+      @back = old_length - 1
+    end
+    
     if @front == -1 && @back == -1
       @front = 0
-      @back = 1
+      @back = 0
+      @store[@back] = element
+    elsif (@back == @store.length - 1 && @front != 0)
+      @back = 0
+      @store[@back] = element
+    else
+      @back = @back + 1
+      @store[@back] = element
     end
-    
-    if @front == @back
-      return
-    end
-    
-    @store[@back] = element
-    @back = (@back + 1) % @store.length
   end
   
   def dequeue
-    if @front == -1 && @back == -1
+    if @front == -1
       print "Queue is already empty."
     end
     
+    data = @store[@front]
     @store[@front] = nil
     
     if @front == @back
@@ -36,7 +46,7 @@ class Queue
       @front = @front + 1
     end
     
-    return @store[front]
+    return data
   end
   
   def front
@@ -48,7 +58,11 @@ class Queue
   end
   
   def empty?
-    return @store.length > 0
+    if @front == -1 && @back == -1
+      return true
+    else
+      return false
+    end
   end
   
   def to_s
