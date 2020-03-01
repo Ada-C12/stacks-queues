@@ -31,11 +31,7 @@ def balanced(string)
 end
 
 # Time Complexity: O(n) where n is a character in the postfix_expression
-# Space Complexity: Maybe O(1) because there should be 2 characters then an operator,
-#                   so every three characters you replace those three with a single character
-#                   (since all the totals have to be a single number),
-#                   so the stack will theoretically never be more than three characters long
-#                   regardless of the length of the postfix_expression. Assuming the input is valid.
+# Space Complexity: O(n)
 def evaluate_postfix(postfix_expression)
   operators = Set.new(['+', '-', '*', '/'])
   history = Stack.new()
