@@ -30,8 +30,25 @@ def balanced(string)
   return is_balanced
 end
 
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n) where n is a character in the postfix_expression
+# Space Complexity: Maybe O(1) because there should be 2 characters then an operator,
+#                   so every three characters you replace those three with a single character
+#                   (since all the totals have to be a single number),
+#                   so the stack will theoretically never be more than three characters long
+#                   regardless of the length of the postfix_expression. Assuming the input is valid.
 def evaluate_postfix(postfix_expression)
-  raise NotImplementedError, "Not implemented yet"
+  operators = Set.new(['+', '-', '*', '/'])
+  history = Stack.new()
+  postfix_expression.each_char do |char|
+    if !operators.include?(char)
+      history.push(char)
+    else
+      second_operand = history.pop().to_i
+      first_operand = history.pop().to_i
+      # syntax from https://stackoverflow.com/a/20019672
+      result = first_operand.method(char).(second_operand)
+      history.push(result)
+    end
+  end
+  return history.pop()
 end
