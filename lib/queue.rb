@@ -8,8 +8,8 @@ class Queue
   
   def enqueue(element)
     if @front == -1 && @back == -1
-      front = 0
-      back = 1
+      @front = 0
+      @back = 1
     end
     
     if @front == @back
@@ -21,19 +21,34 @@ class Queue
   end
   
   def dequeue
-    raise NotImplementedError, "Not yet implemented"
+    if @front == -1 && @back == -1
+      print "Queue is already empty."
+    end
+    
+    @store[@front] = nil
+    
+    if @front == @back
+      @front = -1
+      @back = -1
+    elsif @front == (@store.length - 1)
+      @front = 0
+    else
+      @front = @front + 1
+    end
+    
+    return @store[front]
   end
   
   def front
-    raise NotImplementedError, "Not yet implemented"
+    return @front
   end
   
   def size
-    raise NotImplementedError, "Not yet implemented"
+    @store.length
   end
   
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    return @store.length > 0
   end
   
   def to_s
