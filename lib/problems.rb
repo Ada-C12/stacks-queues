@@ -3,7 +3,9 @@ require_relative './stack.rb'
 # Time Complexity: ?
 # Space Complexity: ?
 def balanced(string)
-  raise NotImplementedError, "Not implemented yet"
+  return false if string.length.odd?
+
+  
 end
 
 # Time Complexity: ?

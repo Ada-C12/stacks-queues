@@ -9,9 +9,7 @@ class Queue
     if @front == -1 && @back == -1
       @front = 0
       @back = 0
-    end
-
-    if @front == @back
+    elsif @front == @back
       raise StandardError.new "Cannot add element. Queue is full."
     end
 
