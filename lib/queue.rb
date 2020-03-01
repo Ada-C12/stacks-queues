@@ -12,7 +12,7 @@ class Queue
     end
 
     if @front == @back
-      # raise an error
+      raise StandardError.new "Cannot add element. Queue is full."
     end
 
     @store[@back] = element
