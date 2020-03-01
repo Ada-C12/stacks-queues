@@ -37,7 +37,7 @@ class LinkedList
 
       value = @head.data
       @head = @head.next
-      @head.previous = nil
+      @head&.previous = nil
       return value
     end
 
@@ -337,6 +337,6 @@ class LinkedList
         current = current.next
       end
 
-      return list.to_s
+      return list.reverse.to_s
     end
 end
