@@ -17,8 +17,20 @@ def balanced(string)
   return stack.empty?
 end
 
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n)
+# Space Complexity: O(n)
 def evaluate_postfix(postfix_expression)
-  raise NotImplementedError, "Not implemented yet"
+  stack = Stack.new
+  
+  postfix_expression.each_char do |token|
+    if token.match(/[0-9]/)
+      stack.push token.to_i
+    else
+      x = stack.pop
+      y = stack.pop
+      stack.push y.send(token, x)
+    end
+  end
+
+  return stack.pop
 end
