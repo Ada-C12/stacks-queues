@@ -45,4 +45,14 @@ describe "Test Stack Implementation" do
     _(removed).must_equal 7
     _(s.to_s).must_equal "[5, 3]"
   end
+  
+  it "can return the top of the stack" do
+    s = Stack.new
+    s.push(5)
+    s.push(3)
+    s.push(7)
+    
+    top = s.last
+    _(top).must_equal 7
+  end
 end
