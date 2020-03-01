@@ -17,6 +17,14 @@ class Stack
     return @store.empty? ? true : false
   end
 
+  def length
+    return @store.length()
+  end
+
+  def get_last
+    return @store.get_last()
+  end
+
   def to_s
     return @store.to_s
   end
