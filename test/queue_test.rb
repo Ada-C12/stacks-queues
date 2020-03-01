@@ -11,14 +11,14 @@ describe "Test Queue Implementation" do
   end
 
   it "adds something to an empty Queue" do
-    skip
+    # skip
     q = Queue.new
     q.enqueue(10)
     q.to_s.must_equal "[10]"
   end
 
   it "adds multiple somethings to a Queue" do
-    skip
+    # skip
     q = Queue.new
     q.enqueue(10)
     q.enqueue(20)
@@ -27,13 +27,23 @@ describe "Test Queue Implementation" do
   end
 
   it "starts the size of a Queue at 0" do
-    skip
+    # skip
     q = Queue.new
     q.empty?.must_equal true
   end
 
+  it "a Queue is empty after removing all the elements" do
+    # skip
+    q = Queue.new
+    q.enqueue(5)
+    q.enqueue(6)
+    expect(q.dequeue).must_equal 5
+    expect(q.dequeue).must_equal 6
+    expect(q.empty?).must_equal true
+  end
+  
   it "removes something from the Queue" do
-    skip
+    # skip
     q = Queue.new
     q.enqueue(5)
     removed = q.dequeue
@@ -42,7 +52,7 @@ describe "Test Queue Implementation" do
   end
 
   it "removes the right something (LIFO)" do
-    skip
+    # skip
     q = Queue.new
     q.enqueue(5)
     q.enqueue(3)
@@ -53,7 +63,7 @@ describe "Test Queue Implementation" do
   end
 
   it "properly adjusts the size with enqueueing and dequeueing" do
-    skip
+    # skip
     q = Queue.new
     q.empty?.must_equal true
     q.enqueue(-1)
@@ -65,7 +75,7 @@ describe "Test Queue Implementation" do
   end
 
   it "returns the front element in the Queue" do
-    skip
+    # skip
     q = Queue.new
     q.enqueue(40)
     q.enqueue(22)
@@ -73,7 +83,9 @@ describe "Test Queue Implementation" do
     q.dequeue
     expect(q.dequeue).must_equal 22
   end
+
   it "works for a large Queue" do
+    # skip
     q = Queue.new
     q.enqueue(10)
     q.enqueue(20)
@@ -91,7 +103,7 @@ describe "Test Queue Implementation" do
     q.enqueue(120)
     q.enqueue(130)
     q.enqueue(140)
-    q.enqueue(150)
+    # q.enqueue(150)
     q.enqueue(150)
     q.enqueue(160)
     q.enqueue(170)
@@ -101,6 +113,6 @@ describe "Test Queue Implementation" do
     q.enqueue(210)
     q.dequeue
 
-    expect(q.to_s).must_equal('[40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240]')
+    expect(q.to_s).must_equal('[40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210]')
   end
 end
