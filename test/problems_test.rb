@@ -5,7 +5,7 @@ require "minitest/skip_dsl"
 
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
-describe "Test wave 3 problems" do
+xdescribe "Test wave 3 problems" do
   describe "balanced" do
     it "Given balanced strings it should return true" do
       expect(balanced('(({}))')).must_equal true
@@ -29,17 +29,18 @@ describe "Test wave 3 problems" do
     xit "also works if the string has opens and closes in the beginning and end" do
       expect(balanced('[]()')).must_equal true
     end
+    # I personally disagree with this being a balanced string, will come back to it later
   end
   
   describe "postfix" do
-    xit "can add a 2 numbers together" do
+    it "can add a 2 numbers together" do
       expect(evaluate_postfix("34+")).must_equal 7
       expect(evaluate_postfix("34*")).must_equal 12
       expect(evaluate_postfix("34-")).must_equal -1
       expect(evaluate_postfix("34/")).must_equal 0
     end
     
-    xit "can add a evaluate a more complicated expression" do
+    it "can add a evaluate a more complicated expression" do
       expect(evaluate_postfix("34+2*")).must_equal 14
       expect(evaluate_postfix("34*2/")).must_equal 6
       expect(evaluate_postfix("34-1+")).must_equal 0
