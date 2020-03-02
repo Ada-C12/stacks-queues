@@ -30,18 +30,14 @@ class Queue
 
     # resize queue if full 
     if @front == @back && !@is_empty
-      # raise ArgumentError, "Queue is full"
       new_queue_a = @store.dup
       new_queue_b = Array.new(10)
       @store = new_queue_a + new_queue_b
     end
-
-    # # use mod to wrap around
-    # @back = (@back + 1) % @store.length
     
     @store[@back] = element
 
-    # if current status is empty, change to not empty
+    # if queue is empty, change to not empty
     if @is_empty
       @is_empty = false
     end
@@ -51,8 +47,6 @@ class Queue
   def dequeue
     # increase at the front
     # check that the queue is empty when you reach the end
-
-    # size = @store.length
 
     if @front == size-1
       @front = 0
@@ -79,7 +73,6 @@ class Queue
   end
 
   def size
-    # why is size one less than length? Is it because we're leaving an empty cell to indicate array isn't full?
     return @store.length-1
   end
 
