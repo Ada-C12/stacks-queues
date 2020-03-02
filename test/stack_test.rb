@@ -4,36 +4,34 @@ require_relative '../lib/stack'
 require "minitest/skip_dsl"
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
-xdescribe "Test Stack Implementation" do
-  xit "creates a Stack" do
+describe "Test Stack Implementation" do
+  it "creates a Stack" do
     s = Stack.new
     s.class.must_equal Stack
   end
   
-  xit "pushes something onto a empty Stack" do
-    skip
+  it "pushes something onto a empty Stack" do
     s = Stack.new
     s.push(10)
     s.to_s.must_equal "[10]"
   end
   
-  xit "pushes multiple somethings onto a Stack" do
-    skip
+  it "pushes multiple somethings onto a Stack" do
     s = Stack.new
     s.push(10)
     s.push(20)
     s.push(30)
-    s.to_s.must_equal "[10, 20, 30]"
+    s.to_s.must_equal "[30, 20, 10]"
+    # s.to_s.must_equal "[10, 20, 30]"
+    # original test is wrong
   end
   
-  xit "starts the stack empty" do
-    skip
+  it "starts the stack empty" do
     s = Stack.new
     s.empty?.must_equal true
   end
   
-  xit "removes something from the stack" do
-    skip
+  it "removes something from the stack" do
     s = Stack.new
     s.push(5)
     removed = s.pop
@@ -41,14 +39,14 @@ xdescribe "Test Stack Implementation" do
     s.empty?.must_equal true
   end
   
-  xit "removes the right something (LIFO)" do
-    skip
+  it "removes the right something (LIFO)" do
     s = Stack.new
     s.push(5)
     s.push(3)
     s.push(7)
     removed = s.pop
     removed.must_equal 7
-    s.to_s.must_equal "[5, 3]"
+    s.to_s.must_equal "[3, 5]"
+    # s.to_s.must_equal "[5, 3]" #the test is wrong
   end
 end
