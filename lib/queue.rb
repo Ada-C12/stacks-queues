@@ -29,11 +29,20 @@ class Queue
   end
 
   def front
-    raise NotImplementedError, "Not yet implemented"
+    return @front
   end
 
   def size
-    raise NotImplementedError, "Not yet implemented"
+    return 0 if is_empty
+
+    count = 0
+    index = @front
+    while index <= back
+      count += 1
+      index += 1
+    end
+
+    return count
   end
 
   def empty?
