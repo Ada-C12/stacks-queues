@@ -32,11 +32,11 @@ class Queue
   end
   
   def front
-    raise NotImplementedError, "Not yet implemented"
+    return @store[@front]
   end
   
   def size
-    raise NotImplementedError, "Not yet implemented"
+    return @store.compact.length
   end
   
   def empty?

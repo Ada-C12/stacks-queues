@@ -32,12 +32,12 @@ class LinkedList
       end
     end
 
-    def remove_first()
+    def remove_first
       raise ArgumentError, "Empty" if self.empty?
 
       value = @head.data
       @head = @head.next
-      @head.previous = nil
+      # @head.previous = nil
       return value
     end
 
