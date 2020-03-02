@@ -25,6 +25,9 @@ class Stack
   def to_s
     return @store.to_s
   end
+  def length
+    return @store.length
+  end
 end
 
 # USING LINKED LIST
