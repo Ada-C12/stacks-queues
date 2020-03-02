@@ -4,7 +4,7 @@ require_relative '../lib/stack'
 require "minitest/skip_dsl"
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
-xdescribe "Test Stack Implementation" do
+describe "Test Stack Implementation" do
   it "creates a Stack" do
     s = Stack.new
     s.class.must_equal Stack
@@ -21,9 +21,8 @@ xdescribe "Test Stack Implementation" do
     s.push(10)
     s.push(20)
     s.push(30)
-    s.to_s.must_equal "[30, 20, 10]"
-    # s.to_s.must_equal "[10, 20, 30]"
-    # original test is wrong
+    s.to_s.must_equal "[10, 20, 30]"
+    
   end
   
   it "starts the stack empty" do
@@ -46,7 +45,6 @@ xdescribe "Test Stack Implementation" do
     s.push(7)
     removed = s.pop
     removed.must_equal 7
-    s.to_s.must_equal "[3, 5]"
-    # s.to_s.must_equal "[5, 3]" #the test is wrong
+    s.to_s.must_equal "[5, 3]"
   end
 end
