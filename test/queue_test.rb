@@ -28,16 +28,15 @@ describe "Test Queue Implementation" do
 
   it "starts the size of a Queue at 0" do
     q = Queue.new
-    q.empty?.must_equal true
+    expect(q.empty?).must_equal true
   end
 
   it "a Queue is empty after removing all the elements" do
-    skip
     q = Queue.new
     q.enqueue(5)
     q.enqueue(6)
-    expect( expect(q.dequeue) ).must_equal 5
-    expect( expect(q.dequeue) ).must_equal 6
+    expect(q.dequeue).must_equal 5
+    expect(q.dequeue).must_equal 6
     expect(q.empty?).must_equal true
   end
 
@@ -46,7 +45,7 @@ describe "Test Queue Implementation" do
     q.enqueue(5)
     removed = q.dequeue
     removed.must_equal 5
-    q.empty?.must_equal true
+    expect(q.empty?).must_equal true
   end
 
   it "removes the right something (LIFO)" do
@@ -55,20 +54,20 @@ describe "Test Queue Implementation" do
     q.enqueue(3)
     q.enqueue(7)
     removed = q.dequeue
-    removed.must_equal 5
+    expect(removed).must_equal 5
     #q.to_s.must_equal "[3, 7]"
-    q.to_s.must_equal "[nil, 3, 7, nil, nil, nil, nil, nil, nil, nil]"
+    expect(q.to_s).must_equal "[nil, 3, 7, nil, nil, nil, nil, nil, nil, nil]"
   end
 
   it "properly adjusts the size with enqueueing and dequeueing" do
     q = Queue.new
-    q.empty?.must_equal true
+    expect(q.empty?).must_equal true
     q.enqueue(-1)
     q.enqueue(-60)
-    q.empty?.must_equal false
+    expect(q.empty?).must_equal false
     q.dequeue
     q.dequeue
-    q.empty?.must_equal true
+    expect(q.empty?).must_equal true
   end
 
   it "returns the front element in the Queue" do
