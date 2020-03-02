@@ -11,18 +11,12 @@ class Queue
       @back = 0
     end
     
-    ## this replaces the 'if' statement below that kept throwing an error when the queue was not full.
     if !@store[@back].nil? && @front == @back
       raise StandardError.new('queue is full.')
     end
     
     @store[@back] = element
     @back = (@back+1) % @store.length
-    
-    # if @front == @back % @store.length
-    #   ## TODO:: this error is being hit before the queue is actually full - off by 1 :/
-    #   raise StandardError.new('queue is full.')
-    # end
     
   end
   
@@ -38,12 +32,11 @@ class Queue
   end
   
   def front
-    raise NotImplementedError, "Not yet implemented"
+    return @store[@front]
   end
   
   def size
     return @store.compact.length
-    # raise NotImplementedError, "Not yet implemented"
   end
   
   def empty?
@@ -52,7 +45,6 @@ class Queue
     else
       return false
     end
-    # raise NotImplementedError, "Not yet implemented"
   end
   
   # helper method for tests
