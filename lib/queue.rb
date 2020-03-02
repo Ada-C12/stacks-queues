@@ -5,11 +5,11 @@ class Queue
     raise NotImplementedError, "Not yet implemented"
   end
 
-  def enqueue(element)
+  def enqueue(element) #add to the rear
     raise NotImplementedError, "Not yet implemented"
   end
 
-  def dequeue
+  def dequeue #remove and return from front
     raise NotImplementedError, "Not yet implemented"
   end
 
