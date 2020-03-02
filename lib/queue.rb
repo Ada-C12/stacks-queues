@@ -2,15 +2,15 @@ class Queue
 
   def initialize
 
-    # # # assume fixed array length is 10
-    # @store = Array.new(10)
+    # # assume fixed array length is 10
+    @store = Array.new(10)
     
     # initialize front and back both at the same place
-    @front = -1 
+    @front = -1
     @back = -1
 
-    # create empty array
-    @store = []
+    # default status is empty
+    @is_empty = true
   end
 
   def enqueue(element)
@@ -18,47 +18,73 @@ class Queue
     
     # if queue has space, move back to the next free position, i.e. next position clockwise
     
-    # why is size one less than length?
-    size = @store.length-1
+    # why is size one less than length? Is it because we're leaving an empty cell to indicate array isn't full?
+    # size = @store.length-1
 
-    # wraparound
-    if (@back == size-1)
+    # below could also be written `back = (back + 1) % size`
+    if @back == size-1
       @back = 0
-    # no wraparound
     else
       @back += 1
     end
 
-    # if the queue is full 
-    if @front == @back
-      # tests require that the queue be resized 
-
+    # resize queue if full 
+    if @front == @back && !@is_empty
+      # raise ArgumentError, "Queue is full"
+      new_queue_a = @store.dup
+      new_queue_b = Array.new(10)
+      @store = new_queue_a + new_queue_b
     end
 
-    # @store[@back] = element
     # # use mod to wrap around
     # @back = (@back + 1) % @store.length
     
     @store[@back] = element
+
+    # if current status is empty, change to not empty
+    if @is_empty
+      @is_empty = false
+    end
 
   end
 
   def dequeue
     # increase at the front
     # check that the queue is empty when you reach the end
-    raise NotImplementedError, "Not yet implemented"
+
+    # size = @store.length
+
+    if @front == size-1
+      @front = 0
+    else
+      @front += 1
+    end
+
+    # update is_empty for empty queue
+    if @front == @back
+      @is_empty = true
+    end
+
+    removed = @store[@front]
+
+    # initially used delete_at(@front) but reassigning value to nil preserves fixed array size
+    @store[@front] = nil
+
+    # return the element that was removed
+    return removed
   end
 
   def front
-    raise NotImplementedError, "Not yet implemented"
+    @front
   end
 
   def size
-    raise NotImplementedError, "Not yet implemented"
+    # why is size one less than length? Is it because we're leaving an empty cell to indicate array isn't full?
+    return @store.length-1
   end
 
   def empty?
-    return @store.empty?
+    return @is_empty
   end
 
   def to_s
