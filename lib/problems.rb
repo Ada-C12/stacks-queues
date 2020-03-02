@@ -1,6 +1,6 @@
 require_relative "./stack.rb"
 
-# Time Complexity: O(n) n represents each character
+# Time Complexity: O(n) n represents each character in the string input
 # Space Complexity: O(n) because we're pushing parentheses onto a stack
 def balanced(string)
   stack = []
