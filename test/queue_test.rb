@@ -85,7 +85,7 @@ describe "Test Queue Implementation" do
     q.enqueue(130)
     q.enqueue(140)
     q.enqueue(150)
-    q.enqueue(150)
+    # q.enqueue(150)  # i think this is an accidental duplicate, since expected answer has only one 150
     q.enqueue(160)
     q.enqueue(170)
     q.enqueue(180)
@@ -93,6 +93,9 @@ describe "Test Queue Implementation" do
     q.enqueue(200)
     q.enqueue(210)
     q.dequeue
+    q.enqueue(220)  # looks like this line wasn't included at first, but is in the expected answer
+    q.enqueue(230)  # looks like this line wasn't included at first, but is in the expected answer
+    q.enqueue(240)  # looks like this line wasn't included at first, but is in the expected answer
 
     expect(q.to_s).must_equal('[40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240]')
   end
