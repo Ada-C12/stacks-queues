@@ -5,7 +5,7 @@ require "minitest/skip_dsl"
 
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
-xdescribe "Test Queue Implementation" do
+describe "Test Queue Implementation" do
   it "creates a Queue" do
     q = Queue.new
     q.class.must_equal Queue
@@ -23,6 +23,7 @@ xdescribe "Test Queue Implementation" do
     q.enqueue(20)
     q.enqueue(30)
     q.to_s.must_equal "[10, 20, 30]"
+    
   end
   
   it "starts the size of a Queue at 0" do
@@ -38,7 +39,7 @@ xdescribe "Test Queue Implementation" do
     q.empty?.must_equal true
   end
   
-  xit "removes the right something (LIFO)" do
+  it "removes the right something (LIFO)" do
     q = Queue.new
     q.enqueue(5)
     q.enqueue(3)
@@ -48,7 +49,7 @@ xdescribe "Test Queue Implementation" do
     q.to_s.must_equal "[3, 7]"
   end
   
-  xit "properly adjusts the size with enqueueing and dequeueing" do
+  it "properly adjusts the size with enqueueing and dequeueing" do
     q = Queue.new
     q.empty?.must_equal true
     q.enqueue(-1)
@@ -59,15 +60,27 @@ xdescribe "Test Queue Implementation" do
     q.empty?.must_equal true
   end
   
-  xit "returns the front element in the Queue" do
+  it "verifies that the dequeue method returns the value that was previously at the front of the queue" do
     q = Queue.new
     q.enqueue(40)
     q.enqueue(22)
     q.enqueue(3)
     q.dequeue
     expect(q.dequeue).must_equal 22
+    # this test doesn't actually measure that the front method is working. 
   end
-  xit "works for a large Queue" do
+  
+  it "returns the front element in the queue" do
+    q = Queue.new
+    q.enqueue(40)
+    q.enqueue(22)
+    q.enqueue(3)
+    expect(q.front).must_equal 40
+    
+    
+  end
+  
+  it "works for a large Queue" do
     q = Queue.new
     q.enqueue(10)
     q.enqueue(20)
@@ -86,13 +99,15 @@ xdescribe "Test Queue Implementation" do
     q.enqueue(130)
     q.enqueue(140)
     q.enqueue(150)
-    q.enqueue(150)
     q.enqueue(160)
     q.enqueue(170)
     q.enqueue(180)
     q.enqueue(190)
     q.enqueue(200)
     q.enqueue(210)
+    q.enqueue(220)
+    q.enqueue(230)
+    q.enqueue(240)
     q.dequeue
     
     expect(q.to_s).must_equal('[40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240]')

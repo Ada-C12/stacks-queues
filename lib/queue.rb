@@ -25,26 +25,26 @@ class Queue
   end
   
   def dequeue
-    puts "I'm the whole thing #{self}"
-    puts "I'm the front #{@front}"
-    puts "I'm the back #{@back}"
     
-    temp = @back
+    temp = @store[0]
     
     if @back == 0
-      
+      @store.slice!(0)
+      @front = -1
+      @back = -1
+      return temp
     end
     
-    # return temp
+    @back -= 1
+    @store.slice!(0)
     
-    # temp = @back
-    # @back -= 1
-    # self.pop
-    # return temp
+    return temp
+    
   end
   
   def front
-    raise NotImplementedError, "Not yet implemented"
+    temp = @store[0]
+    return temp
   end
   
   def size
