@@ -18,4 +18,9 @@ class Stack
   def to_s
     return @store.to_s
   end
+
+  # Had to add this one for balanced() in problems.rb
+  def getLast
+    return @store[-1]
+  end
 end

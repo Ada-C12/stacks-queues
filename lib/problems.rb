@@ -9,7 +9,7 @@ def balanced(string)
   # if char is a closer, remove pairing opener from inventory (which needs to be at index -1), else return false
   return true if string == ''
 
-  inventory = []
+  inventory = Stack.new()
   openers = ['{', '[', '(']
   closers = {'}' => '{', ']' => '[', ')' => '('}
 
@@ -18,27 +18,37 @@ def balanced(string)
     currChar = string[index]
 
     if openers.include? currChar
-      inventory << currChar
+      inventory.push(currChar)
 
     elsif closers.keys.include? currChar
-      if inventory[-1] == closers[currChar]
+      return false if inventory.empty?
+      if inventory.getLast() == closers[currChar]
         inventory.pop()
       else 
         return false
       end
 
     else  
-      # Unexpected characterin string, error!
+      # Unexpected character in string, error!
       return false
     end
+
+    index += 1
   end
 
   # at the end, everything should be matched and inventory shoudl be empty
-  return inventory == []
+  return inventory.empty?
 end
 
 # Time Complexity: ?
 # Space Complexity: ?
-def evaluate_postfix(postfix_expression)
-  raise NotImplementedError, "Not implemented yet"
-end
+# def evaluate_postfix(postfix_expression)
+#   # ASSUMING that all operands are single digit integers 
+#   stack = []
+
+#   index = 0
+#   until index == postfix_expression.length
+#     currChar = postfix_expression[index]
+
+#   end
+# end
