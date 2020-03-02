@@ -40,7 +40,7 @@ def balanced(string)
   until i == (string.length) do
     
     if string[i] != expected_mirror[additional_counter] 
-      return false
+      return mince_balance(string)
     else
       i += 1
       additional_counter += 1
@@ -49,6 +49,31 @@ def balanced(string)
   
   return true
   
+end
+
+def mince_balance(string)
+  
+  reference = Hash.new
+  
+  reference = {
+  "(" => ")",
+  ")" => "(", 
+  "[" => "]", 
+  "]" => "[", 
+  "{" => "}", 
+  "}" => "{"}
+  
+  bite_reference = []
+  
+  i = 0
+  
+  until i == (string.length) do
+    if string[i] != reference[string[i + 1]] 
+      return false
+    end
+    i += 2
+  end
+  return true
 end
 
 # Time Complexity: O(n)
@@ -72,7 +97,6 @@ def evaluate_postfix(postfix_expression)
     return evaluator(second_operation, first_half, second_value)
   end
 end
-
 
 def evaluator(operation, first_value, second_value)
   

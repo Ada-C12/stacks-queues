@@ -26,7 +26,7 @@ describe "Test wave 3 problems" do
       expect(balanced('{}')).must_equal true
     end
     
-    xit "also works if the string has opens and closes in the beginning and end" do
+    it "also works if the string has opens and closes in the beginning and end" do
       expect(balanced('[]()')).must_equal true
     end
     # I personally disagree with this being a balanced string, will come back to it later
