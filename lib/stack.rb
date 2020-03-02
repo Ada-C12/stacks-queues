@@ -20,4 +20,8 @@ class Stack
   def to_s
     return @store.to_s
   end
+
+  def top
+    return @store.get_last()
+  end
 end
