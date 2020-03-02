@@ -5,7 +5,7 @@ require "minitest/skip_dsl"
 
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
-describe "Test Queue Implementation" do
+xdescribe "Test Queue Implementation" do
   it "creates a Queue" do
     q = Queue.new
     q.class.must_equal Queue
