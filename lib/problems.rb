@@ -42,13 +42,52 @@ end
 
 # Time Complexity: ?
 # Space Complexity: ?
-# def evaluate_postfix(postfix_expression)
-#   # ASSUMING that all operands are single digit integers 
-#   stack = []
+def evaluate_postfix(postfix_expression)
+  # ASSUMING that all operands are single digit integers 
+  stack = Stack.new()
+  operations = %w[+ - * /]
+  ints = %w[0 1 2 3 4 5 6 7 8 9]
 
-#   index = 0
-#   until index == postfix_expression.length
-#     currChar = postfix_expression[index]
+  index = 0
+  until index == postfix_expression.length
+    currChar = postfix_expression[index]
 
-#   end
-# end
+    if ints.include? currChar
+      stack.push(currChar.to_i)
+    
+    elsif operations.include? currChar 
+      operand_2nd = stack.pop()
+      operand_1st = stack.pop()
+      
+      if (operand_1st.class != Integer) || (operand_2nd.class != Integer)
+        return "ERROR! Can't do math on non-Integers #{operand_1st} and/or #{operand_2nd}!"
+      end
+
+      case currChar
+      when '+'
+        result = operand_1st + operand_2nd
+      when '-'
+        result = operand_1st - operand_2nd
+      when '*'
+        result = operand_1st * operand_2nd
+      when '/'
+        result = operand_1st / operand_2nd
+      end
+
+      stack.push(result)
+
+    else
+      return "ERROR! unexpected character #{currChar}!"
+    end
+
+    index += 1
+  end
+
+  # there should be only 1 element left in the stack
+  answer = stack.pop()
+  if stack.empty?
+    return answer 
+  else
+    return "ERROR! More than 1 element left in stack, how?!"
+  end
+end
