@@ -67,7 +67,6 @@ class Queue
   end
 
   def size
-    # why is size one less than length? Is it because we're leaving an empty cell to indicate when array isn't full?
     return @store.length
   end
 
