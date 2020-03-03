@@ -1,7 +1,7 @@
 require_relative '../lib/stack'
 
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n) where n is characters in string
+# Space Complexity: O(n) where n is characters in string
 def balanced(string)
   return false if string.length.odd?
   closings = {
@@ -14,12 +14,13 @@ def balanced(string)
 
   i = 0
   until i > string.length - 1 do
-    if i < string.length / 2
+    if closings[string[i]]
       stack.push(string[i])
     else
       removed = stack.pop
       return false if closings[removed] != string[i]
     end
+
     i += 1
   end
   return true

@@ -1,7 +1,8 @@
 class Queue
   attr_reader :front, :back, :store
   def initialize
-    @store = Array.new(20)
+    @size = 20
+    @store = Array.new(@size)
     @front = -1
     @back = -1
   end
@@ -11,7 +12,7 @@ class Queue
       @front = 0
       @back = 0
     elsif @front == @back
-      # do something
+      raise StandardError.new "Queue is out of room! Needs to be resized."
     end
 
     @store[@back] = element
