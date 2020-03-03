@@ -27,7 +27,7 @@ def balanced(string)
     end
   end
   
-  return true if stack.empty?
+  return stack.empty?
 end
 
 # Time Complexity: O(n)
