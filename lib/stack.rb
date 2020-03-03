@@ -1,6 +1,5 @@
 # wave 1
 require "./linked_list"
-# require_relative './stack.rb'
 
 class Stack
   def initialize
