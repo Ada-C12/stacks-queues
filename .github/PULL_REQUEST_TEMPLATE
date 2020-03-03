@@ -4,12 +4,25 @@ Thanks for doing some brain yoga. You are now submitting this assignment!
 ## Comprehension Questions
 |  Question 	|  Answer 	|
 |------------	| ---------	|
-|  What is an ADT?	|   	|
-|  Describe a Stack	|   	|
-|  What are the 5 methods in Stack and what does each do?	|   	|
-|  Describe a Queue	|   	|
-|  What are the 5 methods in Queue and what does each do?	|   	|
-|  What is the difference between implementing something and using something? | 	|
+|  What is an ADT?	| --> Abstract Data type (ADT) is a type (or class) for objects 
+  whose behaviour is defined by a set of value and a set of operations.  	|
+
+|  Describe a Stack	| --> A stack is an abstract data type, (Last in First out) that serves as a collection of elements, 
+   with two principal operations: push, which adds an element to the collection, and
+   pop, which removes the most recently added element that was not yet removed.  	|
+
+|  What are the 5 methods in Stack and what does each do?	| push : Pushes an element on the top of the stack.
+ pop : Removes and returns the top element of the stack. 
+ empty : It returns true if nothing is on the top of the stack ( if the stack is empty). Else, returns false.
+ peek : Returns the element on the top of the stack, but does not remove it.  	|
+
+|  Describe a Queue	| A Queue is an Abstract Data Structure which stores data and allows access in a First-In-First-Out order (FIFO)/last in last out.  	|
+
+|  What are the 5 methods in Queue and what does each do?	| enqueue: add an element to the rear of the queue
+dequeue: Remove & return the element from the front
+is_empty: returns true if the queue is empty   	|
+
+|  What is the difference between implementing something and using something? | Implementing something: is to build it and know the how it works. Using something: using existing code	|
 
 ## OPTIONAL JobSimulation
 |  Question 	|  Answer 	|
