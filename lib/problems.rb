@@ -14,9 +14,9 @@ def balanced(string)
     if pairs.values.include?(char)
       stack.push(char)
     else
-    return false if stack.empty?
-    removed = stack.pop
-    return false unless removed == pairs[char]
+      return false if stack.empty?
+      removed = stack.pop
+      return false unless removed == pairs[char]
     end
   end
 
