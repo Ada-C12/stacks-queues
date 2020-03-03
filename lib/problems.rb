@@ -26,7 +26,7 @@ def balanced(string)
     else
       # O(n) time complexity
       if stack.get_last() == symbol_pairs[current]
-        stack.pop
+        stack.pop()
         stack_length -= 1
       else 
         return false
@@ -39,8 +39,37 @@ def balanced(string)
   return stack.empty?
 end
 
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n) - where n is the amount of characters in the expression
+# Space Complexity: O(n) - where n is the number of digits in the expression
 def evaluate_postfix(postfix_expression)
-  raise NotImplementedError, "Not implemented yet"
+  stack = Stack.new()
+  return nil if postfix_expression.empty?
+
+  # This solution would not work for floats
+  postfix_expression.each_char do |char|
+    if char.match?(/\d/)
+      stack.push(char)
+    elsif char.match?(/[*-\/+]/)
+      val_1 = stack.pop().to_i
+      val_2 = stack.pop().to_i
+      result = nil
+
+      case char
+      when '*'
+        result = val_1 * val_2
+      when '-'
+        result = val_2 - val_1
+      when '/'
+        result = val_2 / val_1
+      when '+'
+        result = val_1 + val_2
+      end
+
+      stack.push(result)
+    else
+      raise StandardError.new "Invalid character #{char}."
+    end
+  end
+
+  return stack.pop()
 end
