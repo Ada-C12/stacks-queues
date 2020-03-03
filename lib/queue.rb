@@ -7,25 +7,36 @@ class Queue
   end
 
   def enqueue(element)
+    #Circular buffer method
     #Check if queue is empty
     if @front == -1 && @back == -1
       @front = 0
       @back = 1 
     end 
+
     #Check if queue is full
-    if @front == @back
-      #Decide what to do if circular buffer is full 
-    end 
+    if ((@back + 1) % @store.length) == @front
+      raise ArgumentError.new("Queue is full!")
+    end
 
-    @store(@back) = element 
-    @back += 1 
-
-    #Make it wrap around when it reaches the end 
+    @store[@back] = element
+    #Make it wrap around when it reaches the end & use modulo to not go over the end
     @back = (@back + 1) % @store.length
   end
 
   def dequeue
-    raise NotImplementedError, "Not yet implemented"
+    if @front == @back
+      raise ArgumentError.new("Queue is empty!")
+    end
+    
+    #Store the current first element in a temp
+    temp = @store[@front]
+    #Make the front element nil 
+    @store[@front] = nil
+
+    @front = (@front + 1) % @store.length
+    
+    return temp
   end
 
   def front
