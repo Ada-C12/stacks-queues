@@ -27,8 +27,8 @@ def stack_checker(stack, expected_paren)
   return !(stack.empty? || stack.pop != expected_paren)
 end 
 
-# Time Complexity: ?
-# Space Complexity: ?
+# Time Complexity: O(n)
+# Space Complexity: O(n) <- but we'd probably use less assuming the expression contains operators
 def evaluate_postfix(postfix_expression)
   stack = Stack.new
   postfix_expression.each_char do |n|
