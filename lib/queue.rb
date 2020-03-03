@@ -30,12 +30,6 @@ class Queue
       new_queue_c = Array.new(10)
       @back = @store.length - 1
       @store = new_queue_a + new_queue_b + new_queue_c
-      # @back = 9
-      # @back = @store.length - 10 => 120, nil, 130
-      # @back = @store.length - 11 => 120, 130, 140, 130, nil 
-      # WHAT IS THE BACK ARG URRRG?!?
-      # @front = @store[0]
-      # @back = @store.length => 30, 40, 130 ... 120, nil (code is inserting at index 2 WHY??????)
       @store[@back] = element
       @front = -1
 
