@@ -42,7 +42,7 @@ describe "Test Queue Implementation" do
     q = Queue.new
     q.enqueue(5)
     removed = q.dequeue
-    removed.must_equal 5
+    _(removed).must_equal 5
     _(q.empty?).must_equal true
   end
   

@@ -30,5 +30,26 @@ end
 # Time Complexity: ?
 # Space Complexity: ?
 def evaluate_postfix(postfix_expression)
-  raise NotImplementedError, "Not implemented yet"
+  stack = Stack.new
+  postfix_expression.each_char do |n|
+    if /\+|-|\*|\//.match(n)
+      stack_operation_helper(stack, stack.pop, stack.pop, n)
+    else 
+      stack.push(n)
+    end 
+  end 
+  return stack.pop
 end
+
+def stack_operation_helper(stack, first_pop, second_pop, operator)
+  case operator
+  when "+"
+    stack.push(second_pop.to_i + first_pop.to_i)
+  when "-"
+    stack.push(second_pop.to_i - first_pop.to_i)
+  when "*"
+    stack.push(second_pop.to_i * first_pop.to_i)
+  when "/"
+    stack.push(second_pop.to_i / first_pop.to_i)
+  end 
+end 
