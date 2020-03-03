@@ -47,4 +47,12 @@ describe "Test Stack Implementation" do
     removed.must_equal 7
     s.to_s.must_equal "[5, 3]"
   end
+  
+  it "checks that view gets the last element from the stack" do
+    s = Stack.new
+    s.push(10)
+    s.push(20)
+    s.push(30)
+    s.view.to_s.must_equal "30"
+  end
 end

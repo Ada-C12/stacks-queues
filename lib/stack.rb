@@ -26,6 +26,10 @@ class Stack
     end
   end
   
+  def view
+    return @store.get_last
+  end
+  
   def to_s
     return @store.to_s
   end
