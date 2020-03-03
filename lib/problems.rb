@@ -26,16 +26,5 @@ end
 # Time Complexity: ?
 # Space Complexity: ?
 def evaluate_postfix(postfix_expression)
-  stack = Stack.new
-  operators = {
-    "*" => :*,
-    "/" =>  :/,
-    "+" =>  :+,
-    "-" => :-,
-    "%" => :%,
-  }
-
-  postfix_expression.each_char do |char|
-
-  end
+  raise NotImplementedError, "Not implemented yet"
 end
