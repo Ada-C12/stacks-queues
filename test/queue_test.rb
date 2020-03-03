@@ -58,7 +58,7 @@ describe "Test Queue Implementation" do
   
   it "properly adjusts the size with enqueueing and dequeueing" do
     q = Queue.new
-    q.empty?.must_equal true
+    _(q.empty?).must_equal true
     q.enqueue(-1)
     q.enqueue(-60)
     _(q.empty?).must_equal false
