@@ -45,6 +45,7 @@ class Queue
   end
 
   private
+  # copy current @store content into new_store in queue order
   def copy_content(new_store)
     if front
       current_index = @front
