@@ -86,18 +86,27 @@ describe "Test Queue Implementation" do
     q.enqueue(30)
     expect(q.dequeue).must_equal 10
     expect(q.dequeue).must_equal 20
+    expect(q.to_s).must_equal("[nil, nil, 30, nil, nil, nil, nil, nil, nil, nil]")
     q.enqueue(40)
+    expect(q.to_s).must_equal("[nil, nil, 30, 40, nil, nil, nil, nil, nil, nil]")
     q.enqueue(50)
     q.enqueue(60)
     q.enqueue(70)
     q.enqueue(80)
     q.enqueue(90)
     q.enqueue(100)
+    expect(q.to_s).must_equal("[nil, nil, 30, 40, 50, 60, 70, 80, 90, 100]")
     q.enqueue(110)
+    # circular buffer in action: front index points to 30, back index points to 110
+    expect(q.to_s).must_equal("[110, nil, 30, 40, 50, 60, 70, 80, 90, 100]")
     q.enqueue(120)
+    # resize in action: queue length has hit 10, so another 10 spots are added at back of the array and queue is resorted with @front at index 0
+    expect(q.to_s).must_equal("[30, 40, 50, 60, 70, 80, 90, 100, 110, 120, nil, nil, nil, nil, nil, nil, nil, nil, nil]")
     q.enqueue(130)
+    # after resizing, next element is added at the back
+    expect(q.to_s).must_equal("[30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, nil, nil, nil, nil, nil, nil, nil, nil]")
     q.enqueue(140)
-    q.enqueue(150)
+    expect(q.to_s).must_equal("[30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, nil, nil, nil, nil, nil, nil, nil]")
     q.enqueue(150)
     q.enqueue(160)
     q.enqueue(170)
@@ -105,8 +114,7 @@ describe "Test Queue Implementation" do
     q.enqueue(190)
     q.enqueue(200)
     q.enqueue(210)
-    q.dequeue
-
-    expect(q.to_s).must_equal("[100, 110, nil, 130, 140, 150, 150, 160, 170, 180, 190, 200, 210, nil, nil, nil, nil, nil, nil, nil]")
+    expect(q.dequeue).must_equal 30
+    expect(q.to_s).must_equal("[nil, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210]")
   end
 end
