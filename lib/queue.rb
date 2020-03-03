@@ -1,55 +1,70 @@
 class Queue
-  attr_reader :front, :back
+  attr_reader :front, :back, :store
   def initialize
-    @store = Array.new()
+    @store = Array.new(20)
     @front = -1
     @back = -1
   end
 
   def enqueue(element)
-    if @front == -1 && @back == -1
+    if empty?
       @front = 0
       @back = 0
     elsif @front == @back
-      @back = @store.length
+      # do something
     end
 
     @store[@back] = element
-    @back = (@back + 1) % size
-    
-    return @store
+    @back = (@back + 1) % @store.length
   end
 
   def dequeue
-    return @store[@front] if empty?
+    return nil if empty?
     
-    @store.pop
-    
-    if @front == @back
+    removed = @store[@front]
+    @store[@front] = nil
+
+    if @back - 1 == @front
       @front = -1
       @back = -1
     else
-      @back -= 1
+      @front = (@front + 1) % @store.length
     end
-
-    return @store[@front]
+    return removed
   end
 
   def front
-    return nil if @front == -1 && @back == -1
+    return nil if empty?
     return @front
   end
 
   def size
-    return @store.length
+    return 0 if empty?
+    return @front - @back if @front > @back
+    return @back + (@store.length - @front)
   end
 
   def empty?
-    return true if @front == -1 && @back == -1
-    return false
+    @front == -1 && @back == -1
   end
 
   def to_s
-    return @store.to_s
+    return [] if empty?
+    return @store.compact.to_s if @front < @back
+
+    output = []
+    i = @front
+    until i > @store.length - 1 
+      output << @store[i]
+      i += 1
+    end
+
+    i = 0
+    until @store[i].nil? || i == @front
+      output << @store[i]
+      i += 1
+    end
+
+    return output
   end
 end
