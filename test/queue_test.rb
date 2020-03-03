@@ -33,7 +33,7 @@ describe "Test Queue Implementation" do
   end
 
   it "a Queue is empty after removing all the elements" do
-    skip
+    # skip
     q = Queue.new
     q.enqueue(5)
     q.enqueue(6)
@@ -52,18 +52,20 @@ describe "Test Queue Implementation" do
   end
 
   it "removes the right something (LIFO)" do
-    skip
+    # skip
     q = Queue.new
     q.enqueue(5)
     q.enqueue(3)
     q.enqueue(7)
+    puts q
     removed = q.dequeue
+    puts q
     removed.must_equal 5
     q.to_s.must_equal "[3, 7]"
   end
 
   it "properly adjusts the size with enqueueing and dequeueing" do
-    skip
+    # skip
     q = Queue.new
     q.empty?.must_equal true
     q.enqueue(-1)
@@ -84,6 +86,7 @@ describe "Test Queue Implementation" do
     expect(q.dequeue).must_equal 22
   end
   it "works for a large Queue" do
+    # skip
     q = Queue.new
     q.enqueue(10)
     q.enqueue(20)
@@ -111,6 +114,6 @@ describe "Test Queue Implementation" do
     q.enqueue(210)
     q.dequeue
 
-    expect(q.to_s).must_equal('[30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]')
+    expect(q.to_s).must_equal('[40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 150, 160, 170, 180, 190, 200, 210]')
   end
 end
