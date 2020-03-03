@@ -1,7 +1,5 @@
 class Queue
   
-  #when front and back are the same, how do you know when the queue is full or empty? depends on the operation you just did. consider changing both to -1 if the array is empty after dequeueing.
-  
   def initialize
     @store = Array.new(10)
     @front = 0
@@ -10,11 +8,23 @@ class Queue
   
   def enqueue(element)
     #resize if the array is full
-    if @front == @back + 1 % @store.length
+    if @front == (@back + 1) % @store.length
       temp = Array.new(@store.length + 1) 
-      @store.each { |n| temp << n }
+      if @front > @back 
+        temp.each_index do |n|
+          if n < @front
+            temp[n] = @store[n]
+          elsif n > @front
+            temp[n] = @store[n-1]
+          end 
+        end 
+        @front += 1
+      else 
+        temp.each_index do |n|
+          temp[n] = @store[n]
+        end 
+      end 
       @store = temp
-      puts "new array is #{@store.to_s}"
     end 
     #add the element
     @store[@back] = element
@@ -44,8 +54,10 @@ class Queue
   
   def to_s
     temp = []
-    @store.each do |n|
-      temp << n if n
+    curr = @front
+    until curr == @back
+      temp << @store[curr] if @store[curr]
+      curr = (curr + 1) % @store.length
     end 
     return "#{temp}"
   end

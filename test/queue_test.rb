@@ -9,13 +9,13 @@ describe "Test Queue Implementation" do
     q = Queue.new
     expect(q.class).must_equal Queue
   end
-
+  
   it "adds something to an empty Queue" do
     q = Queue.new
     q.enqueue(10)
     expect(q.to_s).must_equal "[10]"
   end
-
+  
   it "adds multiple somethings to a Queue" do
     q = Queue.new
     q.enqueue(10)
@@ -23,12 +23,12 @@ describe "Test Queue Implementation" do
     q.enqueue(30)
     expect(q.to_s).must_equal "[10, 20, 30]"
   end
-
+  
   it "starts the size of a Queue at 0" do
     q = Queue.new
     _(q.empty?).must_equal true
   end
-
+  
   it "a Queue is empty after removing all the elements" do
     q = Queue.new
     q.enqueue(5)
@@ -37,7 +37,7 @@ describe "Test Queue Implementation" do
     expect(q.dequeue).must_equal 6
     expect(q.empty?).must_equal true
   end
-
+  
   it "removes something from the Queue" do
     q = Queue.new
     q.enqueue(5)
@@ -45,7 +45,7 @@ describe "Test Queue Implementation" do
     removed.must_equal 5
     _(q.empty?).must_equal true
   end
-
+  
   it "removes the right something (LIFO)" do
     q = Queue.new
     q.enqueue(5)
@@ -55,7 +55,7 @@ describe "Test Queue Implementation" do
     _(removed).must_equal 5
     _(q.to_s).must_equal "[3, 7]"
   end
-
+  
   it "properly adjusts the size with enqueueing and dequeueing" do
     q = Queue.new
     q.empty?.must_equal true
@@ -66,7 +66,7 @@ describe "Test Queue Implementation" do
     q.dequeue
     _(q.empty?).must_equal true
   end
-
+  
   it "returns the front element in the Queue" do
     q = Queue.new
     q.enqueue(40)
@@ -101,7 +101,7 @@ describe "Test Queue Implementation" do
     q.enqueue(200)
     q.enqueue(210)
     q.dequeue
-
-    expect(q.to_s).must_equal('[30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]')
+    
+    expect(q.to_s).must_equal('[40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210]')
   end
 end
