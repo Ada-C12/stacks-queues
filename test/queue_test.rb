@@ -113,4 +113,32 @@ describe "Test Queue Implementation" do
 
     expect(q.to_s).must_equal('[30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]')
   end
+
+  it "works for a large queue with a large number of adds and removes" do
+    q = Queue.new
+
+    99.times do 
+      q.enqueue(10)
+    end
+
+    10.times do 
+      expect(q.dequeue).must_equal 10
+    end
+
+    5.times do 
+      q.enqueue(5)
+    end
+
+    expected_answer = "["
+    89.times do 
+      expected_answer = expected_answer + "10, "
+    end
+
+    4.times do 
+      expected_answer = expected_answer + "5, "
+    end
+    expected_answer = expected_answer + "5]"
+
+    expect(q.to_s).must_equal expected_answer
+  end
 end
