@@ -27,18 +27,12 @@ class Queue
   def dequeue
     if @front == @back
       raise ArgumentError.new('The queue is empty')
-    end
-
+    else
       element = @store[@front]
 
       @front = (@front + 1) % @store.length
       return element
-    # @data = @store[@front]
-
-    # @store[@front] = nil
-
-    # @front = @front + 1
-    # return @data
+    end
   end
 
   def front
