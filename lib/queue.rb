@@ -36,7 +36,7 @@ class Queue
   end
   
   def front
-    # raise NotImplementedError, "Not yet implemented"
+    return @store[@front]
   end
   
   def size
@@ -60,13 +60,13 @@ class Queue
   end
 end
 
-q = Queue.new
-q.enqueue(0)
+# q = Queue.new
+# q.enqueue(0)
 # q.enqueue(1)
 # q.enqueue(2)
 # q.enqueue(3)
-p q
+# p q
 # p q.size
-p q.dequeue
+# p q.dequeue
 # p q.size
-p q
+# p q.front
