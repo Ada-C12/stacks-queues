@@ -27,9 +27,26 @@ end
 # Time Complexity: ?
 # Space Complexity: ?
 def evaluate_postfix(postfix_expression)
-  raise NotImplementedError, "Not implemented yet"
+  operands = ["*", "**", "/", "%", "+", "-"]
+  s= Stack.new
+  
+  postfix_expression.each_char do |char|
+    if operands.include?(char)
+      first = s.pop
+      second = s.pop
+      result = eval("#{second}#{char}#{first}")
+      s.push(result)
+    else
+      s.push(char)
+    end
+  end
+  
+  return s.pop
 end
 
 # p balanced("{[{}{}]}")
 # p balanced("{[{}{}]")
 # p balanced("{()}[)")
+
+# p evaluate_postfix("35+6*") #48
+# p evaluate_postfix("53+62/*35*+") #39
