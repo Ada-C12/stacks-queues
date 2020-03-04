@@ -8,10 +8,6 @@ Thanks for doing some brain yoga. You are now submitting this assignment!
 |  Describe a Stack	|   	|
 |  What are the 5 methods in Stack and what does each do?	|   	|
 |  Describe a Queue	|   	|
-|  What are the 5 methods in Queue and what does each do?	|   	|
 |  What is the difference between implementing something and using something? | 	|
+|  When is a circular buffer advantageous over a dynamic array or LinkedList?  |   |
 
-## OPTIONAL JobSimulation
-|  Question 	|  Answer 	|
-|------------	| ---------	|
-|  Did you include a sample run of your code as a comment?	|   	|
