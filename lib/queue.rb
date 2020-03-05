@@ -25,14 +25,18 @@ class Queue
   
 
   def dequeue
-    if @front == @back
-      raise ArgumentError.new('The queue is empty')
+    if @front == -1
+      raise ArgumentError, "Queue Empty"
     else
-      element = @store[@front]
-
-      @front = (@front + 1) % @store.length
-      return element
+      value = @store[@front]
+      @store[@front] = -nil
+      @front = (@front +  1) % @max_size
+      if @front == @back 
+        @front = @back = -1
+      end
+      return value
     end
+ 
   end
 
   def front
