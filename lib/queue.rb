@@ -42,7 +42,11 @@ class Queue
   def dequeue
     item = @store[@front]
     @store[@front] = nil
-    @front = (@front + 1) % @store.length
+    if self.empty?
+      @front = @back = -1
+    else
+      @front = (@front + 1) % @store.length
+    end
     return item
   end
 

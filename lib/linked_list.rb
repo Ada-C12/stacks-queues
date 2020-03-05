@@ -36,8 +36,13 @@ class LinkedList
       raise ArgumentError, "Empty" if self.empty?
 
       value = @head.data
-      @head = @head.next
-      @head.previous = nil
+      if @tail == @head
+        @tail = @head = nil
+      else
+        @head = @head.next
+        @head.previous = nil
+      end
+
       return value
     end
 
@@ -84,7 +89,7 @@ class LinkedList
       min = current.data
       until current.nil?
         if current.data < min
-          min = current.data 
+          min = current.data
         end
         current = current.next
       end
@@ -104,7 +109,6 @@ class LinkedList
         length += 1
       end
       return length
-      
     end
 
     # method that returns the value at a given index in the linked list
@@ -240,7 +244,7 @@ class LinkedList
     end
 
 
-    # Additional Exercises 
+    # Additional Exercises
     # returns the value in the first node
     # returns nil if the list is empty
     # Time Complexity: O(1)

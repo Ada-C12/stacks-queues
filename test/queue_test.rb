@@ -111,4 +111,13 @@ describe "Test Queue Implementation" do
 
     expect(q.to_s).must_equal('[40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240]')
   end
+
+  it "works when you enqueue then dequeue right away" do
+    q = Queue.new()
+    q.enqueue(1)
+    q.dequeue()
+    q.enqueue(2)
+    q.enqueue(3)
+    expect(q.to_s).must_equal('[2, 3]')
+  end
 end
