@@ -1,6 +1,6 @@
 class Queue
   def initialize
-    @store = Array.new(50)
+    @store = Array.new(30)
     @front = @back = -1
   end
   
@@ -9,18 +9,15 @@ class Queue
     if @front == -1 && @back == -1
       @front = 0
       @back = 1
-    end
-    
-    # queue is full
-    if @front == @back
+      @store[@front] = element
+      
+    elsif @front == @back
+      #queue is full
       raise ArgumentError, "Queue is full"
-    end    
-    
-    @store[@back] = element
-    @back = (@back + 1) % @store.length
-    
-    if @store[@front].nil?
-      @front = (@front + 1) % @store.length
+      
+    else      
+      @store[@back] = element
+      @back = (@back + 1) % @store.length
     end
   end
   
@@ -30,8 +27,12 @@ class Queue
     end  
     
     removed = @store[@front]
-    @store[@front] = nil
     @front = (@front + 1) % @store.length  
+    
+    if @front == @back
+      @front = @back = -1
+    end 
+    
     return removed
   end
   
@@ -48,6 +49,13 @@ class Queue
   end 
   
   def to_s
-    return @store[@front...@back].to_s
+    list = []
+    current = @front
+    
+    while current != @back
+      list << @store[current]
+      current = (current + 1) % @store.length
+    end
+    return list.to_s
   end
 end 
