@@ -2,7 +2,7 @@ class Queue
 
   def initialize
     # first in, first out, like a check-out line
-    @store = Array.new(20)
+    @store = Array.new(30)
     # pointers to @store nodes
     @front = @back = -1
   end
@@ -24,7 +24,19 @@ class Queue
   end
 
   def dequeue
-    raise NotImplementedError, "Not yet implemented"
+    # if empty return nil
+    if @front == -1 && @back == -1
+      return nil
+    end
+    # if queue is not empty return the first element in the list (at front)
+    # and remove it from queue
+    dequeued = @store[@front]
+    @front += 1
+    # if it was the last one, set front and back to -1
+    if @front == @back
+      @front = @back = -1
+    end
+    return dequeued
   end
 
   def front
@@ -36,7 +48,7 @@ class Queue
   end
 
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    return @front == @back && @back == -1
   end
 
   def to_s
