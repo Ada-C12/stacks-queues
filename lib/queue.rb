@@ -2,19 +2,11 @@ class Queue
   
   def initialize
     @store = Array.new(30)
-    # we don't have a front and back yet so they're both -1
-    @front = @back = -1
+    @front = @back = 0
     
   end
   
   def enqueue(element)
-    # if queue is empty
-    if @front == -1 && @back == -1
-      @front = 0
-      # because there will be one element after we enqueue the first one
-      @back = 0
-    end
-    
     # if queue is full
     if ((@back + 1) % @store.length) == @front
       raise ArgumentError.new("Error: queue is full")
@@ -42,11 +34,11 @@ class Queue
     return @store[@front]
   end
   
-  def size
+  def size   
     if @front < @back
       return @back - @front
     else
-      return @front - @back
+      return @back - 1 + @store.length - (@front + 1)
     end
   end
   
