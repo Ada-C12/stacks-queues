@@ -2,7 +2,7 @@ class Queue
 
   def initialize
     # first in, first out, like a check-out line
-    @store = Array.new(30)
+    @store = Array.new(19)
     # pointers to @store nodes
     @front = @back = -1
   end
@@ -10,17 +10,21 @@ class Queue
   def enqueue(element)
     # if empty then add element node to index 0 
     if @front == -1 && @back == -1
+      puts "setting front and back to 0"
       @front = 0
       @back = 0
     end
     # if queue is full
-    if @front == ((@back + 1) % @store.length) 
-      return nil
+    if @front == @back && !@store[@front].nil?
+      puts "adding #{element}, queue will be full"
+      puts "(@front: #{@front}, @back: #{@back}"
     end
-
+    puts "adding #{element} to @back located at index #{@back}"
+    puts "@front: #{@front}"
     @store[@back] = element
     @back = (@back + 1) % @store.length
-    return @store[@back]
+    puts "moved @back to #{@back}"
+    return element
   end
 
   def dequeue
@@ -31,11 +35,14 @@ class Queue
     # if queue is not empty return the first element in the list (at front)
     # and remove it from queue
     dequeued = @store[@front]
-    @front += 1
+    @store[@front] = nil
+    @front = (@front + 1) % @store.length
     # if it was the last one, set front and back to -1
-    if @front == @back
+    if @front == @back && @store[@back].nil?
+      puts "it was the last one, resetting queue"
       @front = @back = -1
     end
+    puts "removed #{dequeued} from queue, @front: #{@front}, @back: #{@back}"
     return dequeued
   end
 
@@ -44,7 +51,14 @@ class Queue
   end
 
   def size
-    raise NotImplementedError, "Not yet implemented"
+    # from front to end
+    if @front < @back
+      size = @store[@front...@back].length
+    # from back to end, then start to front
+    else
+      size = @store[@back..-1] + @store[0...@front]
+    end
+    return size
   end
 
   def empty?
@@ -54,11 +68,16 @@ class Queue
   def to_s
     # from front to end
     if @front < @back
-      @store = @store[@front...@back]
-    # from back to end, then start to front
+      print_store = @store[@front...@back]
+    # from front to end, then 0 to back
     else
-      @store = @store[@back..-1] + @store[0...@front]
+      print_store = @store[@front..-1] + @store[0...@back]
     end
-    return @store.to_s
+    puts "front and back:"
+    puts @front
+    puts @back
+    puts "actual @store:"
+    puts @store.to_s
+    return print_store.to_s
   end
 end

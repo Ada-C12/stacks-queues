@@ -29,6 +29,31 @@ describe "Test Queue Implementation" do
     q.empty?.must_equal true
   end
 
+  it "calculates size correctly" do
+    q = Queue.new
+    q.enqueue(10)
+    q.enqueue(20)
+    q.enqueue(30)
+    expect(q.size).must_equal 3
+    q.dequeue
+    expect(q.size).must_equal 2  
+    q.enqueue(40)
+    q.enqueue(50)
+    q.enqueue(60)
+    q.enqueue(70)
+    q.enqueue(80)
+    q.enqueue(90)
+    q.enqueue(100)
+    q.enqueue(110)
+    q.enqueue(120)
+    expect(q.size).must_equal 11
+    q.dequeue
+    q.dequeue
+    q.dequeue
+    q.dequeue
+    expect(q.size).must_equal 7
+  end
+
   it "removes something from the Queue" do
     q = Queue.new
     q.enqueue(5)
