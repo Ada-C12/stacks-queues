@@ -15,7 +15,7 @@ class Stack
   end
 
   def empty?
-    return @store ? true : false
+    return @store.empty?
   end
 
   def to_s
