@@ -1,22 +1,26 @@
 class Stack
   def initialize
-    # @store = ...
-    raise NotImplementedError, "Not yet implemented"
+    @store = []
   end
 
   def push(element)
-    raise NotImplementedError, "Not yet implemented"
+    @store << element
   end
 
   def pop
-    raise NotImplementedError, "Not yet implemented"
+    @store.pop()
   end
 
   def empty?
-    raise NotImplementedError, "Not yet implemented"
+    return @store.length == 0
   end
 
   def to_s
     return @store.to_s
+  end
+
+  # Had to add this one for balanced() in problems.rb
+  def getLast
+    return @store[-1]
   end
 end
