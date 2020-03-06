@@ -4,7 +4,9 @@ require_relative './stack.rb'
 # Space Complexity: ?
 def balanced(string)
   return true if string.length == 0
-  
+
+  return false if string.length % 2 == 1
+
   open_parens = ["[","{","("] 
   closed_parens = ["]","}",")"] 
 
@@ -14,17 +16,13 @@ def balanced(string)
     if open_parens.include?(element)
       stack.push(element)
     elsif closed_parens.include?(element)
-      position = closed_parens.index(element)
-      if !stack.empty? && open_parens[position] == stack[(stack.length-1)]
-        stack.pop 
-      elsif 
-        stack.empty?
-      else
+      data = stack.pop 
+      if open_parens.find_index(data) != closed_parens.find_index(element)
         return false
       end
     end
   end
-
+  return true
 end
 
 # Time Complexity: ?
