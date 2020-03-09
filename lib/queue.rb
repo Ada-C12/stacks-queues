@@ -10,9 +10,9 @@ class Queue
       # this is quen the queue is full, throw error 
       raise ArgumentError
     else
-      @back = (@back + 1) % @store.length
-      @empty = false
       @store[@back] = element
+      @empty = false
+      @back = (@back + 1) % @store.length
     end
   end
 
@@ -35,7 +35,7 @@ class Queue
   end
 
   def empty?
-    return self.empty
+    return @empty
   end
 
   def to_s
