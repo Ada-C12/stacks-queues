@@ -3,7 +3,17 @@ require_relative './stack.rb'
 # Time Complexity: ?
 # Space Complexity: ?
 def balanced(string)
-  raise NotImplementedError, "Not implemented yet"
+  
+  # stack = Stack.new
+  # (string.length).times do |i|
+  #   stack.push(string[i])
+  # end
+  # (string.length).times do |i|
+  #   if stack.pop() == string[i]
+  #     return false
+  #   end
+  # end
+  # return true
 end
 
 # Time Complexity: ?

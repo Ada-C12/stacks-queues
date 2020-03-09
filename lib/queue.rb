@@ -1,41 +1,50 @@
 class Queue
-  def initialize
-    @store = Array.new()
-    # front and back of buffer
-    @front = -1
-    # for a buffer 
-    # @back = -1
+
+#   Using a circular buffer implement a Queue with the following methods:
+
+# - `enqueue(value)` - Adds the value to the back of the queue.
+# - `dequeue` - removes and returns a value from the front of the queue
+# - `empty?` returns true if the queue is empty and false otherwise
+  def initialize(size = 10)
+    @store = Array.new(size)
+    # front and back of buffer set to -1
+    @front = @back = 0
+    @empty = true
   end
 
   def enqueue(element)
-    if @front == -1 #&& @back == -1
-     @front = 0
+    if @front == @back && @empty
+      raise ArgumentError
     end
-
-    return @store << element
-    # @back = (@back + 1) % @store.length
+    @empty = false
+  
+    @store[@back] = element
+    @back = (@back + 1) % @store.length
   end
 
   def dequeue
+    return nil if self.empty?
     if @store.length > 0
       return @store.shift
     end
   end
 
   def front
-    raise NotImplementedError, "Not yet implemented"
+    return @store[@front]
   end
 
   def size
-    raise NotImplementedError, "Not yet implemented"
+    return @store.size
   end
 
   def empty?
-    return true if @store.empty?
-    return false
+    return self.empty
+  
   end
 
   def to_s
     return @store.to_s
   end
 end
+
+

@@ -2,6 +2,7 @@ require_relative './linked_list.rb'
 class Stack
   def initialize
     @store = LinkedList.new
+    @last_added = nil
     # raise NotImplementedError, "Not yet implemented"
   end
 
@@ -24,6 +25,9 @@ class Stack
     else
       return false
     end
+  end
+
+  def view_first()
   end
 
   def to_s
