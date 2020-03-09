@@ -14,7 +14,7 @@ describe "Test Queue Implementation" do
     # 
     q = Queue.new
     q.enqueue(10)
-    expect(q.to_s).must_equal "[10]"
+    expect(q.to_s).must_equal "[nil, 10, nil, nil, nil, nil, nil, nil, nil, nil]"
   end
 
   it "adds multiple somethings to a Queue" do
@@ -23,7 +23,7 @@ describe "Test Queue Implementation" do
     q.enqueue(10)
     q.enqueue(20)
     q.enqueue(30)
-    expect(q.to_s).must_equal "[10, 20, 30]"
+    expect(q.to_s).must_equal "[nil, 10, 20, 30, nil, nil, nil, nil, nil, nil]"
   end
 
   it "starts the size of a Queue at 0" do
@@ -37,8 +37,8 @@ describe "Test Queue Implementation" do
     q = Queue.new
     q.enqueue(5)
     q.enqueue(6)
-    expect( q.dequeue ).must_equal 5
-    expect( q.dequeue ).must_equal 6
+    q.dequeue.must_equal 5
+    q.dequeue.must_equal 6
     expect(q.empty?).must_equal true
   end
 
@@ -57,7 +57,7 @@ describe "Test Queue Implementation" do
     q.enqueue(7)
     removed = q.dequeue
     removed.must_equal 5
-    q.to_s.must_equal "[3, 7]"
+    q.to_s.must_equal "[nil, 3, 7, nil, nil, nil, nil, nil, nil, nil]"
   end
 
   it "properly adjusts the size with enqueueing and dequeueing" do
@@ -82,12 +82,12 @@ describe "Test Queue Implementation" do
   end
   it "works for a large Queue" do
     # 
-    q = Queue.new
+    q = Queue.new(22)
     q.enqueue(10)
     q.enqueue(20)
     q.enqueue(30)
-    expect(q.dequeue).must_equal 10
-    expect(q.dequeue).must_equal 20
+    q.dequeue.must_equal 10
+    q.dequeue.must_equal 20
     q.enqueue(40)
     q.enqueue(50)
     q.enqueue(60)

@@ -1,25 +1,29 @@
 class Queue
-  def initialize
-    @store = Array.new()
-    # front and back of buffer
-    @front = -1
-    # for a buffer 
-    # @back = -1
+  def initialize(size = 10)
+    @store = Array.new(size)
+    @front = @back = 0
+    @empty = true
   end
 
   def enqueue(element)
-    if @front == -1 #&& @back == -1
-     @front = 0
+    if @front == @back && !@empty
+      # this is quen the queue is full, throw error 
+      raise ArgumentError
+    else
+      @back = (@back + 1) % @store.length
+      @empty = false
+      @store[@back] = element
     end
-
-    return @store << element
-    # @back = (@back + 1) % @store.length
   end
 
   def dequeue
-    if @store.length > 0
-      return @store.shift
+    value = @store[@front]
+    @store[@front] = nil
+    @front = (@front + 1) % @store.length
+    if @front == @back
+      @empty = true
     end
+    return value
   end
 
   def front
@@ -31,8 +35,7 @@ class Queue
   end
 
   def empty?
-    return true if @store.empty?
-    return false
+    return @empty
   end
 
   def to_s
