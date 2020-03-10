@@ -14,7 +14,7 @@ class Stack
   end
 
   def empty?
-    return @store.empty? ? true : false
+    return @store.empty?
   end
 
   def length

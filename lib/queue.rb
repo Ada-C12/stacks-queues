@@ -18,10 +18,13 @@ class Queue
   end
 
   def dequeue
+    # should have checks for queue being empty
+    # should check if front & back are the same
     element = @store[@front]
 
     @store[@front] = nil
     @front = (@front + 1) % @store.length
+    @front = @back = -1 if @front == @back
 
     return element
   end
@@ -36,23 +39,31 @@ class Queue
     if @back > @front
       length = (@back - @front) + 1
     elsif @front > @back
-      length = @store.length - @front
-      i = 0
-
-      until @store[i] == nil
-        length += 1
-        i += 1
-      end
+      # Get the length from the front to the end and then add 
+      # the length from index 0 to @back 
+      length = @store.length - @front + @back
     end
 
     return length
   end
 
   def empty?
-    return @store.compact.empty? ? true : false
+    return @front == -1
   end
 
   def to_s
+    # doesn't account for if values have wrapped around the 
+    # array
+
     return @store.compact.to_s
+
+    ##alternate method
+    # list = []
+    # current = @front
+    # while current != @back
+    #   list << @store[current]
+    #   current = (current + 1) % @store.length
+    # end
+    # return list.to_s
   end
 end
