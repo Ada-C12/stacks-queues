@@ -29,8 +29,8 @@ class Queue
       raise ArgumentError, "Queue Empty"
     else
       value = @store[@front]
-      @store[@front] = -nil
-      @front = (@front +  1) % @max_size
+      @store[@front] = nil
+      @front = (@front +  1) % @store.length
       if @front == @back 
         @front = @back = -1
       end
