@@ -1,3 +1,4 @@
+
 # Defines a node in the singly linked list
 class Node
   attr_reader :data # allow external entities to read value but not write
@@ -265,7 +266,8 @@ class LinkedList
     end
 
     def remove_last()
-      value = @tail.data
+      value = @tail.data unless @tail.nil?
+      
       if @head == @tail
         @head = @tail = nil
       else

@@ -1,4 +1,4 @@
-require 'linked_list'
+require_relative './linked_list.rb'
 
 class Stack
   def initialize
@@ -6,17 +6,15 @@ class Stack
   end
 
   def push(element)
-    @store.add_last(element)
+    @store.add_first(element)
   end
 
   def pop
-    return nil if self.empty?
-
     @store.remove_last
   end
 
   def empty?
-    return @store.empty?
+    @stack.empty?
   end
 
   def to_s
