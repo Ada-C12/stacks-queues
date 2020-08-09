@@ -1,6 +1,8 @@
 require 'minitest/autorun'
 require 'minitest/reporters'
 require_relative '../lib/stack'
+require 'pry'
+
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 
 describe "Test Stack Implementation" do
@@ -20,7 +22,7 @@ describe "Test Stack Implementation" do
     s.push(10)
     s.push(20)
     s.push(30)
-    s.to_s.must_equal "[10, 20, 30]"
+    s.to_s.must_equal "[30, 20, 10]"
   end
 
   it "starts the stack empty" do
@@ -43,6 +45,6 @@ describe "Test Stack Implementation" do
     s.push(7)
     removed = s.pop
     removed.must_equal 7
-    s.to_s.must_equal "[5, 3]"
+    s.to_s.must_equal "[3, 5]"
   end
 end

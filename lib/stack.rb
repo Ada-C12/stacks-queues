@@ -10,11 +10,11 @@ class Stack
   end
 
   def pop
-    @store.remove_last
+    @store.remove_first
   end
 
   def empty?
-    @stack.empty?
+    return @head.nil? 
   end
 
   def to_s
