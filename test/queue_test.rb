@@ -39,7 +39,7 @@ describe "Test Queue Implementation" do
     q.empty?.must_equal true
   end
 
-  xit "removes the right something (LIFO)" do
+  it "removes the right something (LIFO)" do
     q = Queue.new
     q.enqueue(5)
     q.enqueue(3)
@@ -49,7 +49,7 @@ describe "Test Queue Implementation" do
     q.to_s.must_equal "[3, 7]"
   end
 
-  xit "properly adjusts the size with enqueueing and dequeueing" do
+  it "properly adjusts the size with enqueueing and dequeueing" do
     q = Queue.new
     q.empty?.must_equal true
     q.enqueue(-1)
@@ -69,7 +69,7 @@ describe "Test Queue Implementation" do
     expect(q.dequeue).must_equal 22
   end
 
-  xit "works for a large Queue" do
+  it "works for a large Queue" do
     q = Queue.new
     q.enqueue(10)
     q.enqueue(20)
@@ -77,7 +77,6 @@ describe "Test Queue Implementation" do
     expect(q.dequeue).must_equal 10
     expect(q.dequeue).must_equal 20
     expect(q.dequeue).must_equal 30
-    binding.pry
     q.enqueue(40)
     q.enqueue(50)
     q.enqueue(60)

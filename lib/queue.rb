@@ -37,25 +37,26 @@ class Queue
       @front = (@front + 1) % @store.length
     end
 
-    # binding.pry
     return element
 
   end
 
   def front
-
     return @store[@front]
-    
   end
 
-#   def size
-    
-#   end
+  def size
+   
+    if @front < @back
+      return @back - @front
+    else
+      return @back - 1 + @store.length - (@front + 1)
+    end
+
+  end
 
   def empty?
-
     return @front == @rear
-    
   end
 
 
