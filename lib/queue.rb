@@ -7,11 +7,10 @@ class Queue
 
   def enqueue(element)
     
-    if (@rear - 1) % @store.length == @front
+    if (@rear + 1) % @store.length == @front
       return ArgumentError.new("Queue is full")
     end
-
-    # if the queue is empty, set both to 0 
+ 
     if @front == -1 && @rear == -1
       @front = @rear = 0
       @store[@front] = element
@@ -22,15 +21,32 @@ class Queue
 
   end
 
-  # def dequeue
+  def dequeue 
 
+    if @front == -1 && @rear == -1
+      return ArgumentError.new("Queue is empty")
+    end
+
+    element = @store[@front]
+
+    if @front == @rear
+      @store[@front] = nil
+      @front = @rear = -1
+    else
+      @store[@front] = nil
+      @front = (@front + 1) % @store.length
+    end
+
+    # binding.pry
+    return element
+
+  end
+
+  def front
+
+    return @store[@front]
     
-
-  # end
-
-#   def front
-    
-#   end
+  end
 
 #   def size
     

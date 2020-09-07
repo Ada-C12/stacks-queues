@@ -18,7 +18,7 @@ describe "Test Queue Implementation" do
     q.to_s.must_equal "[10]"
   end
 
-  xit "adds multiple somethings to a Queue" do
+  it "adds multiple somethings to a Queue" do
     q = Queue.new
     q.enqueue(10)
     q.enqueue(20)
@@ -31,7 +31,7 @@ describe "Test Queue Implementation" do
     q.empty?.must_equal true
   end
 
-  xit "removes something from the Queue" do
+  it "removes something from the Queue" do
     q = Queue.new
     q.enqueue(5)
     removed = q.dequeue
@@ -60,7 +60,7 @@ describe "Test Queue Implementation" do
     q.empty?.must_equal true
   end
 
-  xit "returns the front element in the Queue" do
+  it "returns the front element in the Queue" do
     q = Queue.new
     q.enqueue(40)
     q.enqueue(22)
